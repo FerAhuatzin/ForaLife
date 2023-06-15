@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735982A3B93D5006D713C /* ForaLifeApp.swift */; };
-		1A17359B2A3B93D5006D713C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17359A2A3B93D5006D713C /* ContentView.swift */; };
 		1A17359D2A3B93D6006D713C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A17359C2A3B93D6006D713C /* Assets.xcassets */; };
 		1A1735A02A3B93D6006D713C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A17359F2A3B93D6006D713C /* Preview Assets.xcassets */; };
 		1A1735AA2A3B93D7006D713C /* ForaLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735A92A3B93D7006D713C /* ForaLifeTests.swift */; };
@@ -16,6 +15,7 @@
 		1A1735B62A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */; };
 		1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C42A3B94AA006D713C /* InitialView.swift */; };
 		1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C62A3B9505006D713C /* RegisterView.swift */; };
+		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		1A1735952A3B93D5006D713C /* ForaLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForaLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1735982A3B93D5006D713C /* ForaLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeApp.swift; sourceTree = "<group>"; };
-		1A17359A2A3B93D5006D713C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A17359C2A3B93D6006D713C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A17359F2A3B93D6006D713C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A1735A52A3B93D6006D713C /* ForaLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForaLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +47,7 @@
 		1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A1735C42A3B94AA006D713C /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		1A1735C62A3B9505006D713C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +135,9 @@
 		1A1735C22A3B93EC006D713C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A17359A2A3B93D5006D713C /* ContentView.swift */,
 				1A1735C42A3B94AA006D713C /* InitialView.swift */,
 				1A1735C62A3B9505006D713C /* RegisterView.swift */,
+				1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,7 +281,7 @@
 			files = (
 				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
 				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
-				1A17359B2A3B93D5006D713C /* ContentView.swift in Sources */,
+				1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

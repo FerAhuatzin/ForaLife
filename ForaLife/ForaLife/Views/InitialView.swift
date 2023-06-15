@@ -10,9 +10,10 @@ import SwiftUI
 struct InitialView: View {
     @State var username: String = ""
     @State var password: String = ""
+    @State var correctCredentials: Bool = false
     
 var body: some View {
-NavigationView {
+NavigationStack {
     
         ZStack {
             Color(hue: 0.374, saturation: 0.846, brightness: 0.426)
@@ -45,6 +46,7 @@ NavigationView {
                     
                 Button("Confirmar") {
                     //comprobar usuario y contraseña correcta en base de datos/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                    correctCredentials = true
                 }
                 .padding()
                 .foregroundColor(Color.white )
@@ -55,10 +57,13 @@ NavigationView {
                 
                 Text("¿Es nuevo usuario?")
                 NavigationLink(destination: RegisterView()) {
-                    Text("Registrese")
+                    Text("Cree su cuenta")
                 }
             
             }
+        }
+        .navigationDestination(isPresented: $correctCredentials) {
+                      MainMenuView()
         }
 }
 
