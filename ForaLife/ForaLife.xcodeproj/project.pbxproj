@@ -14,6 +14,8 @@
 		1A1735AA2A3B93D7006D713C /* ForaLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735A92A3B93D7006D713C /* ForaLifeTests.swift */; };
 		1A1735B42A3B93D7006D713C /* ForaLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735B32A3B93D7006D713C /* ForaLifeUITests.swift */; };
 		1A1735B62A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */; };
+		1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C42A3B94AA006D713C /* InitialView.swift */; };
+		1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C62A3B9505006D713C /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		1A1735AF2A3B93D7006D713C /* ForaLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForaLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1735B32A3B93D7006D713C /* ForaLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeUITests.swift; sourceTree = "<group>"; };
 		1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1A1735C42A3B94AA006D713C /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		1A1735C62A3B9505006D713C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				1A17359A2A3B93D5006D713C /* ContentView.swift */,
+				1A1735C42A3B94AA006D713C /* InitialView.swift */,
+				1A1735C62A3B9505006D713C /* RegisterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
+				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
 				1A17359B2A3B93D5006D713C /* ContentView.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
