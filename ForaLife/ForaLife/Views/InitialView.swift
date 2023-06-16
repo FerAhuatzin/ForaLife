@@ -63,7 +63,7 @@ NavigationStack {
             }
         }
         .navigationDestination(isPresented: $correctCredentials) {
-                      MainMenuView()
+            MainMenuView(user: username)
         }
 }
 

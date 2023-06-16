@@ -100,7 +100,7 @@ struct RegisterView: View {
                 }
             }
             .navigationDestination(isPresented: $correctRegister) {
-                          MainMenuView()
+                MainMenuView(user: username)
             }
             
         }
