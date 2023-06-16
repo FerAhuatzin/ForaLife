@@ -10,6 +10,8 @@ import SwiftUI
 struct MainMenuView: View {
     
     @State var user: String
+    @State var fromAddress: Bool = true
+    @State var fromLocation: Bool = false
     
     var body: some View {
         
@@ -29,6 +31,7 @@ struct MainMenuView: View {
                         .font(.title)
                         .multilineTextAlignment(.center)
                         .navigationBarBackButtonHidden(true)
+                    Spacer()
                        
                     List {
                         HStack {
@@ -94,9 +97,39 @@ struct MainMenuView: View {
                         }
                         
                     }
-                    .frame(width: 500, height: 700)
-                    HStack {
+                    .frame(width: 500, height: 400)
+                    .padding()
                     
+                    
+                    Text("¿Desde dónde necesitas buscar?")
+                        .padding()
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                    HStack {
+                        Image(systemName: "house.circle")
+                            .resizable()
+                            .frame(width: 30, height:30)
+                            .padding()
+                        Toggle("Casa/Departamento", isOn: $fromAddress)
+                            .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
+                            .padding()
+                    }
+                    HStack {
+                        Image(systemName: "mappin.circle")
+                            .resizable()
+                            .frame(width: 30, height:30)
+                            .padding()
+                        Toggle("Ubicación actual", isOn: $fromLocation)
+                            padding()
+                            .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
+                            .padding()
+                    }
+                    
+                    Spacer()
+                    //aplicar que si uno esta prendido el otro debe de estar apagado
+                    //usar el que esta en true para sguiente página
+                    
+                    HStack {
                            
                             NavigationLink(destination: InitialView()) {
                                 Image(systemName: "person.crop.circle")
