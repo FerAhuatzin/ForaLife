@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//crear un arreglo similar llamando a una clase que te permita hacer busquedas conn¡ base a la ubicación o a la dirección del usuario, una vez que hace esas búsquedas los mete en un arreglo con los datos que necesita Place
 private let places = [
     Place(id:0,name:"MrTaco",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "150",address: "Atzala"),
     Place(id:1,name:"Las kekas",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "80",address: "La Meza"),
@@ -17,10 +18,11 @@ private let places = [
 struct NearPlacesView: View {
     @State var place: String
     @State var fromAddress: Bool
-    @State var departingPlace: String = " hogar"
+    @State var departingPlace: String = "hogar"
     
     
     var body: some View {
+        
         NavigationStack{
             VStack {
                 Text(place)

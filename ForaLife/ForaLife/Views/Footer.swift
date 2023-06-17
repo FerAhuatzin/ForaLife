@@ -12,7 +12,7 @@ struct Footer: View {
         NavigationStack {
             HStack {
                                
-                NavigationLink(destination: RegisterView()) {
+                NavigationLink(destination: ProfileView()) {
                     VStack{
                         Image(systemName: "person.circle")
                             .resizable()
@@ -25,7 +25,7 @@ struct Footer: View {
                     }
                 }
                 .padding()
-                NavigationLink(destination: RegisterView()) {
+                NavigationLink(destination: InitialView()) {
                     VStack {
                         Image(systemName: "x.circle")
                             .resizable()
@@ -37,7 +37,7 @@ struct Footer: View {
                     }
                 }
                 .padding()
-                NavigationLink(destination: RegisterView()) {
+                NavigationLink(destination: AboutTheAppView()) {
                     VStack {
                         Image(systemName: "questionmark.app")
                             .resizable()
