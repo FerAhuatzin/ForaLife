@@ -110,6 +110,7 @@ struct MainMenuView: View {
                                     .padding()
                                Text("Hogar")
                                     .font(.callout)
+                                    .multilineTextAlignment(.center)
                             }
                         }
                         
@@ -118,8 +119,9 @@ struct MainMenuView: View {
                                 Image(systemName: "mappin.circle")
                                     .resizable()
                                     .frame(width: 30, height:30)
-                                Text("Mi ubicación")
+                                Text("Ubicación")
                                     .font(.callout)
+                                    .multilineTextAlignment(.center)
                             }
                         }
                         .padding()

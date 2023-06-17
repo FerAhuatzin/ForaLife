@@ -16,7 +16,7 @@ struct NearPlaceRow: View {
                 .frame(width: 50, height:50)
                 .padding()
             Spacer()
-            NavigationLink(destination: RegisterView()){
+            NavigationLink(destination: PlaceAddressView(address:place.address)){
                 VStack (alignment: .leading){
                     Text(place.name)
                         .bold()
