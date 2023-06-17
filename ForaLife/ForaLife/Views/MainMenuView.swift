@@ -16,11 +16,11 @@ struct MainMenuView: View {
     var body: some View {
         
         NavigationStack {
-            ZStack {
                 
                 VStack {
 
                     Text ("Hola "+user)
+                        .padding()
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
@@ -30,20 +30,18 @@ struct MainMenuView: View {
                     Text ("¿A dónde necesitas ir hoy?")
                         .font(.title)
                         .multilineTextAlignment(.center)
-                        .navigationBarBackButtonHidden(true)
                     Spacer()
                        
                     List {
                         HStack {
-                            
                             Image(systemName:"fork.knife.circle")
                                 .resizable()
                                 .frame(width: 50, height:50)
                                 .padding()
                             Text("Restaurantes")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: InitialView()) {
+                            NavigationLink(destination: NearPlacesView(place: "Restaurantes", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -53,9 +51,9 @@ struct MainMenuView: View {
                                 .frame(width: 50, height:50)
                                 .padding()
                             Text("Abarrotes")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: InitialView()) {
+                            NavigationLink(destination: NearPlacesView(place: "Abarrotes", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -65,9 +63,9 @@ struct MainMenuView: View {
                                 .frame(width: 50, height:50)
                                 .padding()
                             Text("Farmacias")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: InitialView()) {
+                            NavigationLink(destination: NearPlacesView(place: "Farmacias", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -77,9 +75,9 @@ struct MainMenuView: View {
                                 .frame(width: 50, height:50)
                                 .padding()
                             Text("Lavanderías")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: InitialView()) {
+                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -89,83 +87,52 @@ struct MainMenuView: View {
                                 .frame(width: 50, height:50)
                                 .padding()
                             Text("Paradas de autobús")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: InitialView()) {
+                            NavigationLink(destination: NearPlacesView(place: "Paradas de aurobús", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
                         
                     }
-                    .frame(width: 500, height: 400)
-                    .padding()
                     
                     
-                    Text("¿Desde dónde necesitas buscar?")
+                    Text("¿Desde dónde necesitas ir?")
                         .padding()
                         .font(.title)
-                        .multilineTextAlignment(.center)
                     HStack {
-                        Image(systemName: "house.circle")
-                            .resizable()
-                            .frame(width: 30, height:30)
-                            .padding()
-                        Toggle("Casa/Departamento", isOn: $fromAddress)
-                            .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            .padding()
-                    }
-                    HStack {
-                        Image(systemName: "mappin.circle")
-                            .resizable()
-                            .frame(width: 30, height:30)
-                            .padding()
-                        Toggle("Ubicación actual", isOn: $fromLocation)
-                            padding()
-                            .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            .padding()
-                    }
+                        
+                        Toggle(isOn: $fromAddress) {
+                            HStack {
+                                Image(systemName: "house.circle")
+                                    .resizable()
+                                    .frame(width: 30, height:30)
+                                    .padding()
+                               Text("Hogar")
+                                    .font(.callout)
+                            }
+                        }
+                        
+                        Toggle(isOn: $fromLocation) {
+                            HStack {
+                                Image(systemName: "mappin.circle")
+                                    .resizable()
+                                    .frame(width: 30, height:30)
+                                Text("Mi ubicación")
+                                    .font(.callout)
+                            }
+                        }
+                        .padding()
+                    }                    
                     
                     Spacer()
                     //aplicar que si uno esta prendido el otro debe de estar apagado
                     //usar el que esta en true para sguiente página
                     
-                    HStack {
-                           
-                            NavigationLink(destination: InitialView()) {
-                                Image(systemName: "person.crop.circle")
-                                    .resizable()
-                                    .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                                    .frame(width: 30, height:30)
-                                Text("Perfil")
-                                    .foregroundColor(Color.black)
-                                   
-                            }
-                        
-                           
-                            NavigationLink(destination: InitialView()) {
-                                Image(systemName: "x.circle")
-                                    .resizable()
-                                    .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                                    .frame(width:30,height: 30)
-                                Text("Cerrar")
-                                    .foregroundColor(Color.black)
-                                    
-                            }
-                        NavigationLink(destination: InitialView()) {
-                            Image(systemName: "questionmark.circle.fill")
-                                .resizable()
-                                .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                                .frame(width:30,height: 30)
-                            Text("Acerca de la app")
-                                .foregroundColor(Color.black)
-                                
-                        }
-
-                        
-                    }
+                    Footer()  
                     
                 }
-            }
+            
             
             
         }
