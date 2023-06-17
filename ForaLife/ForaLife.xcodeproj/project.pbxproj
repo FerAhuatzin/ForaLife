@@ -11,6 +11,9 @@
 		1A1275A22A3D1E2200187595 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1275A12A3D1E2200187595 /* Place.swift */; };
 		1A1275A42A3D1F9000187595 /* NearPlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1275A32A3D1F9000187595 /* NearPlaceRow.swift */; };
 		1A1275A62A3D258B00187595 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1275A52A3D258B00187595 /* Footer.swift */; };
+		1A1275AE2A3D33E900187595 /* PlaceAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1275AD2A3D33E900187595 /* PlaceAddressView.swift */; };
+		1A1275B02A3D367300187595 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1275AF2A3D367300187595 /* ProfileView.swift */; };
+		1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1275B12A3D369400187595 /* AboutTheAppView.swift */; };
 		1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735982A3B93D5006D713C /* ForaLifeApp.swift */; };
 		1A17359D2A3B93D6006D713C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A17359C2A3B93D6006D713C /* Assets.xcassets */; };
 		1A1735A02A3B93D6006D713C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A17359F2A3B93D6006D713C /* Preview Assets.xcassets */; };
@@ -44,6 +47,9 @@
 		1A1275A12A3D1E2200187595 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1A1275A32A3D1F9000187595 /* NearPlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearPlaceRow.swift; sourceTree = "<group>"; };
 		1A1275A52A3D258B00187595 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
+		1A1275AD2A3D33E900187595 /* PlaceAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAddressView.swift; sourceTree = "<group>"; };
+		1A1275AF2A3D367300187595 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1A1275B12A3D369400187595 /* AboutTheAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheAppView.swift; sourceTree = "<group>"; };
 		1A1735952A3B93D5006D713C /* ForaLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForaLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1735982A3B93D5006D713C /* ForaLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeApp.swift; sourceTree = "<group>"; };
 		1A17359C2A3B93D6006D713C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				1A12759E2A3D126900187595 /* NearPlacesView.swift */,
 				1A1275A32A3D1F9000187595 /* NearPlaceRow.swift */,
 				1A1275A52A3D258B00187595 /* Footer.swift */,
+				1A1275AD2A3D33E900187595 /* PlaceAddressView.swift */,
+				1A1275AF2A3D367300187595 /* ProfileView.swift */,
+				1A1275B12A3D369400187595 /* AboutTheAppView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,11 +310,14 @@
 			files = (
 				1A12759F2A3D126900187595 /* NearPlacesView.swift in Sources */,
 				1A1275A42A3D1F9000187595 /* NearPlaceRow.swift in Sources */,
+				1A1275B02A3D367300187595 /* ProfileView.swift in Sources */,
 				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
 				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
 				1A1275A22A3D1E2200187595 /* Place.swift in Sources */,
 				1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */,
 				1A1275A62A3D258B00187595 /* Footer.swift in Sources */,
+				1A1275AE2A3D33E900187595 /* PlaceAddressView.swift in Sources */,
+				1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
