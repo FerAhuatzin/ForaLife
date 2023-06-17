@@ -18,6 +18,7 @@ NavigationStack {
         ZStack {
             Color(hue: 0.374, saturation: 0.846, brightness: 0.426)
                 .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
             Circle()
                 .scale(1.7)
                 .foregroundColor(.white.opacity(0.15))
@@ -58,6 +59,7 @@ NavigationStack {
                 Text("¿Es nuevo usuario?")
                 NavigationLink(destination: RegisterView()) {
                     Text("Cree su cuenta")
+                        .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 }
             
             }
