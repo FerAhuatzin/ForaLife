@@ -19,6 +19,12 @@ struct NearPlacesView: View {
     @State var place: String
     @State var fromAddress: Bool
     @State var departingPlace: String = "hogar"
+    @State var latitude = 0.0
+    @State var longitude = 0.0
+    @State var addressLocation =  AddressLocation(latitude:  19.064095, longitude: -98.305786)
+    @StateObject var currrentLocation = CurrentLocationManager()
+    let nearPlacesManager = NearPlacesManager()
+    let searchLocationManager = SearchLocationManager()
     
     
     var body: some View {
@@ -34,6 +40,12 @@ struct NearPlacesView: View {
                 Text("Cerca de tú " + departingPlace)
                     .font(.title2)
                     .multilineTextAlignment(.center)
+                    .onAppear {
+                        // Llama al método de búsqueda al aparecer la vista
+                        latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                        longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                        nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: latitude, typeOfPlace: place)
+                    }
                 Spacer()
                 List (places, id: \.id){place in
                     NearPlaceRow(place: place)
@@ -43,6 +55,7 @@ struct NearPlacesView: View {
                 Footer()
             }
         }
+        
         
         
     }

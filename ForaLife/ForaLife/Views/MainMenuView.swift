@@ -113,7 +113,9 @@ struct MainMenuView: View {
                                     .multilineTextAlignment(.center)
                             }
                         }
-                        
+                        .onChange(of: fromAddress) { newValue in
+                            fromLocation = !fromAddress
+                        }
                         Toggle(isOn: $fromLocation) {
                             HStack {
                                 Image(systemName: "mappin.circle")
@@ -125,6 +127,9 @@ struct MainMenuView: View {
                             }
                         }
                         .padding()
+                        .onChange(of: fromLocation) { newValue in
+                            fromAddress = !fromLocation
+                        }
                     }                    
                     
                     Spacer()

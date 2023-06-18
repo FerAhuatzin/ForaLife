@@ -22,6 +22,10 @@
 		1A1735B62A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */; };
 		1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C42A3B94AA006D713C /* InitialView.swift */; };
 		1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C62A3B9505006D713C /* RegisterView.swift */; };
+		1A51750A2A3E75E7000D6E9F /* NearPlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5175092A3E75E7000D6E9F /* NearPlacesManager.swift */; };
+		1A51750C2A3E8619000D6E9F /* CurrentLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51750B2A3E8619000D6E9F /* CurrentLocationManager.swift */; };
+		1A51750E2A3E8F79000D6E9F /* SearchLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51750D2A3E8F79000D6E9F /* SearchLocationManager.swift */; };
+		1A5175102A3E900A000D6E9F /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51750F2A3E900A000D6E9F /* AddressLocation.swift */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +65,10 @@
 		1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A1735C42A3B94AA006D713C /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		1A1735C62A3B9505006D713C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		1A5175092A3E75E7000D6E9F /* NearPlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearPlacesManager.swift; sourceTree = "<group>"; };
+		1A51750B2A3E8619000D6E9F /* CurrentLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationManager.swift; sourceTree = "<group>"; };
+		1A51750D2A3E8F79000D6E9F /* SearchLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationManager.swift; sourceTree = "<group>"; };
+		1A51750F2A3E900A000D6E9F /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1A1275A12A3D1E2200187595 /* Place.swift */,
+				1A51750F2A3E900A000D6E9F /* AddressLocation.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -120,9 +129,9 @@
 		1A1735972A3B93D5006D713C /* ForaLife */ = {
 			isa = PBXGroup;
 			children = (
-				1A1275A02A3D1E0E00187595 /* Data */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
-				1A1735C32A3B93FC006D713C /* Logic */,
+				1A1275A02A3D1E0E00187595 /* Data */,
+				1A5175052A3E73CB000D6E9F /* Managers */,
 				1A1735C22A3B93EC006D713C /* Views */,
 				1A17359C2A3B93D6006D713C /* Assets.xcassets */,
 				1A17359E2A3B93D6006D713C /* Preview Content */,
@@ -171,11 +180,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1A1735C32A3B93FC006D713C /* Logic */ = {
+		1A5175052A3E73CB000D6E9F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1A5175092A3E75E7000D6E9F /* NearPlacesManager.swift */,
+				1A51750B2A3E8619000D6E9F /* CurrentLocationManager.swift */,
+				1A51750D2A3E8F79000D6E9F /* SearchLocationManager.swift */,
 			);
-			path = Logic;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,10 +326,14 @@
 				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
 				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
 				1A1275A22A3D1E2200187595 /* Place.swift in Sources */,
+				1A51750C2A3E8619000D6E9F /* CurrentLocationManager.swift in Sources */,
+				1A5175102A3E900A000D6E9F /* AddressLocation.swift in Sources */,
 				1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */,
+				1A51750E2A3E8F79000D6E9F /* SearchLocationManager.swift in Sources */,
 				1A1275A62A3D258B00187595 /* Footer.swift in Sources */,
 				1A1275AE2A3D33E900187595 /* PlaceAddressView.swift in Sources */,
 				1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */,
+				1A51750A2A3E75E7000D6E9F /* NearPlacesManager.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +495,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para encontrar las mejores opciones cerca de su ubicción actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +524,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para encontrar las mejores opciones cerca de su ubicción actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
