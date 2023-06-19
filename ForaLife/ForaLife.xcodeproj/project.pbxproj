@@ -69,6 +69,7 @@
 		1A51750B2A3E8619000D6E9F /* CurrentLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationManager.swift; sourceTree = "<group>"; };
 		1A51750D2A3E8F79000D6E9F /* SearchLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationManager.swift; sourceTree = "<group>"; };
 		1A51750F2A3E900A000D6E9F /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
+		1A9593952A40DEBD00409C67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +130,7 @@
 		1A1735972A3B93D5006D713C /* ForaLife */ = {
 			isa = PBXGroup;
 			children = (
+				1A9593952A40DEBD00409C67 /* Info.plist */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
 				1A1275A02A3D1E0E00187595 /* Data */,
 				1A5175052A3E73CB000D6E9F /* Managers */,
@@ -495,6 +497,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForaLife/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para encontrar las mejores opciones cerca de su ubicción actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -524,6 +527,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForaLife/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para encontrar las mejores opciones cerca de su ubicción actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

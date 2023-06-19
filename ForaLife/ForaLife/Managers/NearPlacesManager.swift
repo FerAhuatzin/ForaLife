@@ -15,7 +15,7 @@ class NearPlacesManager: NSObject, ObservableObject{
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = typeOfPlace
         
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         request.region = region
         
         let search = MKLocalSearch(request: request)

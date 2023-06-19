@@ -41,7 +41,7 @@ struct MainMenuView: View {
                             Text("Restaurantes")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Restaurantes", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Comida", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
