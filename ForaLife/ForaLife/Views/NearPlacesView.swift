@@ -17,11 +17,12 @@ private let places = [
 
 struct NearPlacesView: View {
     @State var place: String
+    @State var typeOfPlace: String
     @State var fromAddress: Bool
     @State var departingPlace: String = "hogar"
     @State var latitude = 0.0
     @State var longitude = 0.0
-    @State var addressLocation =  AddressLocation(latitude:  19.049737657809164 , longitude: -98.28466313294211)
+    @State var addressLocation =  AddressLocation(latitude:  19.05174801886088 , longitude: -98.28527204225016)
     @StateObject var currrentLocation = CurrentLocationManager()
     let nearPlacesManager = NearPlacesManager()
     let searchLocationManager = SearchLocationManager()
@@ -52,6 +53,7 @@ struct NearPlacesView: View {
                             }
                         }
                         nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: longitude, typeOfPlace: place)
+                        nearPlacesManager.searchNearbyPlaces(location: "\(latitude),\(longitude)",typeOfPlace: typeOfPlace, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0")
                     }
                 Spacer()
                 List (places, id: \.id){place in
@@ -70,6 +72,6 @@ struct NearPlacesView: View {
 
 struct NearPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlacesView(place: "Restaurantes", fromAddress: true)
+        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true)
     }
 }
