@@ -26,6 +26,7 @@
 		1A51750C2A3E8619000D6E9F /* CurrentLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51750B2A3E8619000D6E9F /* CurrentLocationManager.swift */; };
 		1A51750E2A3E8F79000D6E9F /* SearchLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51750D2A3E8F79000D6E9F /* SearchLocationManager.swift */; };
 		1A5175102A3E900A000D6E9F /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51750F2A3E900A000D6E9F /* AddressLocation.swift */; };
+		1A92B9702A4112EC0048DC38 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A92B96F2A4112EC0048DC38 /* Alamofire */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A92B9702A4112EC0048DC38 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +116,7 @@
 				1A1735A82A3B93D6006D713C /* ForaLifeTests */,
 				1A1735B22A3B93D7006D713C /* ForaLifeUITests */,
 				1A1735962A3B93D5006D713C /* Products */,
+				1A92B9712A4113090048DC38 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +195,13 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		1A92B9712A4113090048DC38 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,6 +218,9 @@
 			dependencies = (
 			);
 			name = ForaLife;
+			packageProductDependencies = (
+				1A92B96F2A4112EC0048DC38 /* Alamofire */,
+			);
 			productName = ForaLife;
 			productReference = 1A1735952A3B93D5006D713C /* ForaLife.app */;
 			productType = "com.apple.product-type.application";
@@ -280,6 +293,9 @@
 				Base,
 			);
 			mainGroup = 1A17358C2A3B93D5006D713C;
+			packageReferences = (
+				1A92B96E2A4112EC0048DC38 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 1A1735962A3B93D5006D713C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -659,6 +675,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A92B96E2A4112EC0048DC38 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A92B96F2A4112EC0048DC38 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A92B96E2A4112EC0048DC38 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A17358D2A3B93D5006D713C /* Project object */;
 }

@@ -133,8 +133,7 @@ struct MainMenuView: View {
                     }                    
                     
                     Spacer()
-                    //aplicar que si uno esta prendido el otro debe de estar apagado
-                    //usar el que esta en true para sguiente página
+
                     
                     Footer()  
                     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class SearchLocationManager {
     
@@ -21,12 +22,41 @@ class SearchLocationManager {
     }
     func getSearchLocationLongitude (fromAddress: Bool, currentLocation: CurrentLocationManager, addressLocation: AddressLocation) -> Double{
         if fromAddress {
-            print("Latitude:\(addressLocation.longitude)")
+            print("Longitude:\(addressLocation.longitude)")
             return addressLocation.longitude
         }
         else {
             print("Longitude:\(currentLocation.userLocation.center.longitude)")
             return currentLocation.userLocation.center.longitude
+        }
+    }
+    
+    struct GeocodingResponse: Decodable {
+        let results: [GeocodingResult]
+    }
+
+    struct GeocodingResult: Decodable {
+        let placeID: String
+
+        enum CodingKeys: String, CodingKey {
+            case placeID = "place_id"
+        }
+    }
+
+    func convertCoordinatesToPlaceID(latitude: Double, longitude: Double, apiKey: String, completion: @escaping (String?, Error?) -> Void) {
+        let urlString = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=\(apiKey)"
+        
+        AF.request(urlString).responseDecodable(of: GeocodingResponse.self) { response in
+            switch response.result {
+            case .success(let geocodingResponse):
+                if let placeID = geocodingResponse.results.first?.placeID {
+                    print("Place ID: \(placeID)")
+                    completion(placeID, nil)
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+                completion(nil, error)
+            }
         }
     }
 

@@ -44,6 +44,13 @@ struct NearPlacesView: View {
                         // Llama al método de búsqueda al aparecer la vista
                         latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
                         longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                        searchLocationManager.convertCoordinatesToPlaceID(latitude: latitude, longitude: longitude, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0"){ placeID, error in
+                            if let placeID = placeID {
+                                print("Place ID: \(placeID)")
+                            } else if let error = error {
+                                print("Error: \(error)")
+                            }
+                        }
                         nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: longitude, typeOfPlace: place)
                     }
                 Spacer()
