@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Foundation
 import MapKit
+import Alamofire
 
 class NearPlacesManager: NSObject, ObservableObject{
     
@@ -30,6 +30,28 @@ class NearPlacesManager: NSObject, ObservableObject{
             
             for item in response.mapItems {
                 print("Name: \(item.name ?? "")")
+            }
+        }
+    }
+    
+    func searchNearbyPlaces(location: String, typeOfPlace: String, apiKey: String) {
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+        
+        let parameters: [String: Any] = [
+            "location": location, // La ubicación en formato de latitud,longitud (ejemplo: "37.7749,-122.4194")
+            "radius": "1000", // Radio en metros para la búsqueda de lugares cercanos
+            "type": typeOfPlace, // Tipo de lugar a buscar (en este caso, restaurantes)
+            "key": apiKey // Tu clave de API de Google Maps
+        ]
+        
+        AF.request(url, method: .get, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                // Maneja la respuesta exitosa aquí
+                print(value)
+            case .failure(let error):
+                // Maneja el error aquí
+                print(error)
             }
         }
     }

@@ -41,7 +41,7 @@ struct MainMenuView: View {
                             Text("Restaurantes")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Restaurantes", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Restaurantes",typeOfPlace: "restaurant",fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -53,7 +53,7 @@ struct MainMenuView: View {
                             Text("Abarrotes")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Abarrotes", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Abarrotes",typeOfPlace: "supermarket", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -65,7 +65,7 @@ struct MainMenuView: View {
                             Text("Farmacias")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Farmacias", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Farmacias",typeOfPlace: "pharmacy", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -77,7 +77,7 @@ struct MainMenuView: View {
                             Text("Lavanderías")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", typeOfPlace: "laundry",fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
@@ -89,7 +89,7 @@ struct MainMenuView: View {
                             Text("Paradas de autobús")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Paradas de aurobús", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Paradas de autobús",typeOfPlace: "taxi_stop", fromAddress: fromAddress)) {
                                 EmptyView()
                             }
                         }
