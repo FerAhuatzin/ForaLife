@@ -16,6 +16,17 @@ struct RegisterView: View {
     @State var city: String = ""
     @State var zip: String = ""
     @State var correctRegister: Bool = false
+    
+    
+    
+    
+    
+    @State var userAddress: String = ""
+
+    
+    
+    
+    
     var body: some View {
         
         NavigationStack {
@@ -89,6 +100,9 @@ struct RegisterView: View {
                     Button("Crear cuenta") {
                         //Verificar contraseña es igual, guardar en base de datos usuario, contraseña, direccion y coordenadas de la direccion y mostrar ventana confirmación cuenta
                         correctRegister = true
+                        userAddress = "\(street) \(number) \(city) \(zip)"
+                        let manager = AddressLocationManager()
+                        manager.convertAddressToCoordinates(address: userAddress)
                     }
                     .padding()
                     .foregroundColor(Color.white )
@@ -96,6 +110,7 @@ struct RegisterView: View {
                     .background(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                     .cornerRadius(10)
                     .padding()
+
                 
                 }
             }
@@ -107,6 +122,11 @@ struct RegisterView: View {
         
     }
 }
+
+
+
+
+
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
