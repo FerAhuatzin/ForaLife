@@ -22,6 +22,11 @@
 		1A1735B62A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */; };
 		1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C42A3B94AA006D713C /* InitialView.swift */; };
 		1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1735C62A3B9505006D713C /* RegisterView.swift */; };
+		1A2B855C2A421D3800CDBE9D /* CurrentLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B855B2A421D3800CDBE9D /* CurrentLocationManager.swift */; };
+		1A2B855E2A421D5800CDBE9D /* NearPlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */; };
+		1A2B85602A421D8000CDBE9D /* SearchLoctionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */; };
+		1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B85622A421DD100CDBE9D /* AddressLocation.swift */; };
+		1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B85652A421EF700CDBE9D /* Alamofire */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +66,10 @@
 		1A1735B52A3B93D7006D713C /* ForaLifeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForaLifeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A1735C42A3B94AA006D713C /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		1A1735C62A3B9505006D713C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		1A2B855B2A421D3800CDBE9D /* CurrentLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationManager.swift; sourceTree = "<group>"; };
+		1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearPlacesManager.swift; sourceTree = "<group>"; };
+		1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLoctionManager.swift; sourceTree = "<group>"; };
+		1A2B85622A421DD100CDBE9D /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				1A1275A12A3D1E2200187595 /* Place.swift */,
+				1A2B85622A421DD100CDBE9D /* AddressLocation.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -120,9 +131,9 @@
 		1A1735972A3B93D5006D713C /* ForaLife */ = {
 			isa = PBXGroup;
 			children = (
-				1A1275A02A3D1E0E00187595 /* Data */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
-				1A1735C32A3B93FC006D713C /* Logic */,
+				1A1275A02A3D1E0E00187595 /* Data */,
+				1A2B855A2A421D1200CDBE9D /* Managers */,
 				1A1735C22A3B93EC006D713C /* Views */,
 				1A17359C2A3B93D6006D713C /* Assets.xcassets */,
 				1A17359E2A3B93D6006D713C /* Preview Content */,
@@ -171,11 +182,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1A1735C32A3B93FC006D713C /* Logic */ = {
+		1A2B855A2A421D1200CDBE9D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1A2B855B2A421D3800CDBE9D /* CurrentLocationManager.swift */,
+				1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */,
+				1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */,
 			);
-			path = Logic;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +208,9 @@
 			dependencies = (
 			);
 			name = ForaLife;
+			packageProductDependencies = (
+				1A2B85652A421EF700CDBE9D /* Alamofire */,
+			);
 			productName = ForaLife;
 			productReference = 1A1735952A3B93D5006D713C /* ForaLife.app */;
 			productType = "com.apple.product-type.application";
@@ -266,6 +283,9 @@
 				Base,
 			);
 			mainGroup = 1A17358C2A3B93D5006D713C;
+			packageReferences = (
+				1A2B85642A421EF700CDBE9D /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 1A1735962A3B93D5006D713C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -308,16 +328,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2B85602A421D8000CDBE9D /* SearchLoctionManager.swift in Sources */,
 				1A12759F2A3D126900187595 /* NearPlacesView.swift in Sources */,
 				1A1275A42A3D1F9000187595 /* NearPlaceRow.swift in Sources */,
 				1A1275B02A3D367300187595 /* ProfileView.swift in Sources */,
 				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
 				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
 				1A1275A22A3D1E2200187595 /* Place.swift in Sources */,
+				1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */,
+				1A2B855C2A421D3800CDBE9D /* CurrentLocationManager.swift in Sources */,
 				1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */,
 				1A1275A62A3D258B00187595 /* Footer.swift in Sources */,
 				1A1275AE2A3D33E900187595 /* PlaceAddressView.swift in Sources */,
 				1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */,
+				1A2B855E2A421D5800CDBE9D /* NearPlacesManager.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +503,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para poder mostrarle las mejores recomendaciones cerca de su ubicación actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +532,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para poder mostrarle las mejores recomendaciones cerca de su ubicación actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -637,6 +663,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A2B85642A421EF700CDBE9D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A2B85652A421EF700CDBE9D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2B85642A421EF700CDBE9D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A17358D2A3B93D5006D713C /* Project object */;
 }

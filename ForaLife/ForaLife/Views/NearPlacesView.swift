@@ -19,6 +19,12 @@ struct NearPlacesView: View {
     @State var place: String
     @State var fromAddress: Bool
     @State var departingPlace: String = "hogar"
+    @State var latitude = 0.0
+    @State var longitude = 0.0
+    @State var addressLocation =  AddressLocation(latitude:  19.049737657809164 , longitude: -98.28466313294211)
+    @StateObject var currrentLocation = CurrentLocationManager()
+    let nearPlacesManager = NearPlacesManager()
+    let searchLocationManager = SearchLocationManager()
     
     
     var body: some View {
@@ -34,6 +40,19 @@ struct NearPlacesView: View {
                 Text("Cerca de tú " + departingPlace)
                     .font(.title2)
                     .multilineTextAlignment(.center)
+                    .onAppear {
+                        // Llama al método de búsqueda al aparecer la vista
+                        latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                        longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                        searchLocationManager.convertCoordinatesToPlaceID(latitude: latitude, longitude: longitude, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0"){ placeID, error in
+                            if let placeID = placeID {
+                                print("Place ID: \(placeID)")
+                            } else if let error = error {
+                                print("Error: \(error)")
+                            }
+                        }
+                        nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: longitude, typeOfPlace: place)
+                    }
                 Spacer()
                 List (places, id: \.id){place in
                     NearPlaceRow(place: place)
@@ -43,6 +62,7 @@ struct NearPlacesView: View {
                 Footer()
             }
         }
+        
         
         
     }

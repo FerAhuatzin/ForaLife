@@ -15,6 +15,7 @@ struct PlaceAddressView: View {
     }
 }
 
+
 struct PlaceAddressView_Previews: PreviewProvider {
     static var previews: some View {
         PlaceAddressView(address:"Atzala 2002")
