@@ -28,6 +28,7 @@
 		1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B85622A421DD100CDBE9D /* AddressLocation.swift */; };
 		1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B85652A421EF700CDBE9D /* Alamofire */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
+		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLoctionManager.swift; sourceTree = "<group>"; };
 		1A2B85622A421DD100CDBE9D /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				1A2B855B2A421D3800CDBE9D /* CurrentLocationManager.swift */,
 				1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */,
 				1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */,
+				1AC6A6A02A4225370085E82E /* adressLocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */,
 				1A1275A62A3D258B00187595 /* Footer.swift in Sources */,
 				1A1275AE2A3D33E900187595 /* PlaceAddressView.swift in Sources */,
+				1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */,
 				1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */,
 				1A2B855E2A421D5800CDBE9D /* NearPlacesManager.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
