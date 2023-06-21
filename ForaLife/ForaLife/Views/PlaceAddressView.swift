@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct PlaceAddressView: View {
-    @State var address: String
     //con routes de la direccion de entrada trazar mapa hacia el destino
     var body: some View {
-        Text(address)
+        Text("Hello world")
     }
 }
 
 
 struct PlaceAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceAddressView(address:"Atzala 2002")
+        PlaceAddressView()
     }
 }

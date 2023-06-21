@@ -11,9 +11,10 @@ import SwiftUI
 struct Place {
     var id: Int
     var name: String
+    var open: Int
+    var priceLevel: Int
+    var rating: Double
+    var latitude: Double
+    var longitude: Double
     var image: Image
-    var openingHour: String
-    var closingHour: String
-    var averagePrice: String
-    var address: String
 }
