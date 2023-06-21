@@ -27,6 +27,8 @@
 		1A2B85602A421D8000CDBE9D /* SearchLoctionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */; };
 		1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B85622A421DD100CDBE9D /* AddressLocation.swift */; };
 		1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B85652A421EF700CDBE9D /* Alamofire */; };
+		1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */; };
+		1A7F20F02A428DBE00E66342 /* SwiftKueryMySQL in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7F20EF2A428DBE00E66342 /* SwiftKueryMySQL */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,7 @@
 		1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearPlacesManager.swift; sourceTree = "<group>"; };
 		1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLoctionManager.swift; sourceTree = "<group>"; };
 		1A2B85622A421DD100CDBE9D /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
+		1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLManager.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A7F20F02A428DBE00E66342 /* SwiftKueryMySQL in Frameworks */,
 				1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +195,7 @@
 				1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */,
 				1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */,
 				1AC6A6A02A4225370085E82E /* adressLocationManager.swift */,
+				1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			name = ForaLife;
 			packageProductDependencies = (
 				1A2B85652A421EF700CDBE9D /* Alamofire */,
+				1A7F20EF2A428DBE00E66342 /* SwiftKueryMySQL */,
 			);
 			productName = ForaLife;
 			productReference = 1A1735952A3B93D5006D713C /* ForaLife.app */;
@@ -288,6 +294,7 @@
 			mainGroup = 1A17358C2A3B93D5006D713C;
 			packageReferences = (
 				1A2B85642A421EF700CDBE9D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1A7F20EE2A428DBE00E66342 /* XCRemoteSwiftPackageReference "SwiftKueryMySQL" */,
 			);
 			productRefGroup = 1A1735962A3B93D5006D713C /* Products */;
 			projectDirPath = "";
@@ -336,6 +343,7 @@
 				1A1275A42A3D1F9000187595 /* NearPlaceRow.swift in Sources */,
 				1A1275B02A3D367300187595 /* ProfileView.swift in Sources */,
 				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
+				1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */,
 				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
 				1A1275A22A3D1E2200187595 /* Place.swift in Sources */,
 				1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */,
@@ -677,6 +685,14 @@
 				kind = branch;
 			};
 		};
+		1A7F20EE2A428DBE00E66342 /* XCRemoteSwiftPackageReference "SwiftKueryMySQL" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IBM-Swift/SwiftKueryMySQL";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -684,6 +700,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A2B85642A421EF700CDBE9D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		1A7F20EF2A428DBE00E66342 /* SwiftKueryMySQL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A7F20EE2A428DBE00E66342 /* XCRemoteSwiftPackageReference "SwiftKueryMySQL" */;
+			productName = SwiftKueryMySQL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
