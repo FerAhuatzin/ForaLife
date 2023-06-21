@@ -16,14 +16,16 @@ struct NearPlaceRow: View {
                 .frame(width: 50, height:50)
                 .padding()
             Spacer()
-            NavigationLink(destination: PlaceAddressView(address:place.address)){
+            NavigationLink(destination: PlaceAddressView()){
                 VStack (alignment: .leading){
                     Text(place.name)
                         .bold()
                         .foregroundColor(Color.black)
-                    Text(place.openingHour + "-" + place.closingHour)
+                    Text("Open:\(place.open)")
                         .foregroundColor(Color.gray)
-                    Text("$"+place.averagePrice)
+                    Text("$\(place.priceLevel)")
+                        .foregroundColor(Color.gray)
+                    Text("Calificación\(place.rating)")
                         .foregroundColor(Color.gray)
                     Text("Ver ubicación")
                         .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
@@ -35,6 +37,6 @@ struct NearPlaceRow: View {
 
 struct NearPlaceRow_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlaceRow(place:Place(id:0,name:"MrTaco",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "150",address: "Atzala"))
+        NearPlaceRow(place:Place(id: 0, name: "mrTaco", open: 1, priceLevel: 2, rating: 4.7, latitude: 44.0, longitude: 888.0, image: Image(systemName: "fork.knife")))
     }
 }

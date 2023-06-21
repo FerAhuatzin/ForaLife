@@ -8,12 +8,12 @@
 import SwiftUI
 
 //crear un arreglo similar llamando a una clase que te permita hacer busquedas conn¡ base a la ubicación o a la dirección del usuario, una vez que hace esas búsquedas los mete en un arreglo con los datos que necesita Place
-private let places = [
+/*private let places = [
     Place(id:0,name:"MrTaco",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "150",address: "Atzala"),
     Place(id:1,name:"Las kekas",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "80",address: "La Meza"),
     Place(id:2,name:"La terraza",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "110",address: "14 oriente"),
     Place(id:3,name:"Las berenjena",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "180",address: "8 norte")
-]
+]*/
 
 struct NearPlacesView: View {
     @State var place: String
@@ -23,6 +23,7 @@ struct NearPlacesView: View {
     @State var latitude = 0.0
     @State var longitude = 0.0
     @State var addressLocation =  AddressLocation(latitude:  19.05174801886088 , longitude: -98.28527204225016)
+    @State var places: [Place] = []
     @StateObject var currrentLocation = CurrentLocationManager()
     let nearPlacesManager = NearPlacesManager()
     let searchLocationManager = SearchLocationManager()
@@ -45,15 +46,9 @@ struct NearPlacesView: View {
                         // Llama al método de búsqueda al aparecer la vista
                         latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
                         longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
-                        searchLocationManager.convertCoordinatesToPlaceID(latitude: latitude, longitude: longitude, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0"){ placeID, error in
-                            if let placeID = placeID {
-                                print("Place ID: \(placeID)")
-                            } else if let error = error {
-                                print("Error: \(error)")
-                            }
-                        }
-                        nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: longitude, typeOfPlace: place)
-                        nearPlacesManager.searchNearbyPlaces(location: "\(latitude),\(longitude)",typeOfPlace: typeOfPlace, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0")
+                        //nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: longitude, typeOfPlace: place)
+                        places = nearPlacesManager.searchNearbyPlaces(location: "\(latitude),\(longitude)",typeOfPlace: typeOfPlace, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0")
+                        
                     }
                 Spacer()
                 List (places, id: \.id){place in
