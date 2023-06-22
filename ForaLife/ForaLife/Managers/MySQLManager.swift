@@ -4,7 +4,7 @@
 //
 //  Created by Ricardo Ladislao Martinez Cabrera on 20/06/23.
 //
-import SwiftKuery
+/*import SwiftKuery
 import SwiftKueryMySQL
 
 
@@ -37,4 +37,4 @@ class MySQLManager {
         }
         
     }
-}
+} */

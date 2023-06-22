@@ -13,7 +13,7 @@ struct NearPlaceRow: View {
         HStack {
             place.image
                 .resizable()
-                .frame(width: 50, height:50)
+                .frame(width: 40, height:40)
                 .padding()
             Spacer()
             NavigationLink(destination: PlaceAddressView()){
