@@ -9,22 +9,37 @@ import SwiftUI
 
 struct NearPlaceRow: View {
     @State var place: Place
+    @State var imageArray: [String] = []
+    let imageName = "dollarsign.circle"
+    @State var price: Int = 0
+    
     var body: some View {
         HStack {
             place.image
                 .resizable()
                 .frame(width: 40, height:40)
                 .padding()
+                .onAppear{
+                    price = place.priceLevel
+                    for _ in 0..<price {
+                        imageArray.append(imageName)
+                    }
+                    place.priceLevel = 0
+                }
             Spacer()
-            NavigationLink(destination: PlaceAddressView()){
+            NavigationLink(destination: PlaceAddressView(latitude:place.latitude,longitude: place.longitude)){
                 VStack (alignment: .leading){
                     Text(place.name)
                         .bold()
                         .foregroundColor(Color.black)
-                    Text("Open:\(place.open)")
-                        .foregroundColor(Color.gray)
-                    Text("$\(place.priceLevel)")
-                        .foregroundColor(Color.gray)
+                    HStack {
+                        ForEach(imageArray, id: \.self) { imageName in
+                            Image(systemName: imageName)
+                                .resizable()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(Color.gray)
+                            }
+                        }
                     Text("Calificación\(place.rating)")
                         .foregroundColor(Color.gray)
                     Text("Ver ubicación")
@@ -37,6 +52,6 @@ struct NearPlaceRow: View {
 
 struct NearPlaceRow_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlaceRow(place:Place(id: 0, name: "mrTaco", open: 1, priceLevel: 2, rating: 4.7, latitude: 44.0, longitude: 888.0, image: Image(systemName: "fork.knife")))
+        NearPlaceRow(place:Place(id: 0, name: "mrTaco", priceLevel: 2, rating: 4.7, latitude: 44.0, longitude: 888.0, image: Image(systemName: "fork.knife")))
     }
 }

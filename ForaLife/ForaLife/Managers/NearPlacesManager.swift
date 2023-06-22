@@ -69,14 +69,15 @@ class NearPlacesManager: NSObject, ObservableObject{
         var places: [Place] = []
         var name: String = ""
         var open: Int = -1
-        var priceLevel: Int = -1
+        var priceLevel: Int = 0
         var rating: Double = -1.0
         var latitude: Double = 0.0
         var longitude: Double = 0.0
         var image: Image = Image(systemName: "fork.knife.circle")
+        var businessStatus: String = ""
         
         switch typeOfPlace {
-        case "supermarket":
+        case "grocery":
             image = Image(systemName: "cart.circle")
         case "pharmacy":
             image = Image(systemName: "cross.case.circle")
@@ -110,14 +111,18 @@ class NearPlacesManager: NSObject, ObservableObject{
                         longitude = location["lng"] as? Double ?? 0.0
                     }
                 }
+                if key == "business_status" {
+                    businessStatus = value as! String
+                }
             }
-            if (name != "" && open==1) {
-                places.append(Place(id: id, name: name, open: open, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image))
+            if (name != "" && open==1 && businessStatus == "OPERATIONAL") {
+                places.append(Place(id: id, name: name, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image))
                 id += 1
             }
         }
         
         return places
     }
+    
     
 }

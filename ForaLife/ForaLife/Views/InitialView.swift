@@ -11,7 +11,6 @@ struct InitialView: View {
     @State var username: String = ""
     @State var password: String = ""
     @State var correctCredentials: Bool = false
-    
 var body: some View {
 NavigationStack {
     
