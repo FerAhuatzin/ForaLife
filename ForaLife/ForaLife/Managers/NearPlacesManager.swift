@@ -90,7 +90,6 @@ class NearPlacesManager: NSObject, ObservableObject{
         
         var id: Int = 0
         for item in json {
-            print("elemento \(id)")
             for (key, value) in item {
                 if key == "name"{
                     name = value as! String
@@ -112,7 +111,7 @@ class NearPlacesManager: NSObject, ObservableObject{
                     }
                 }
             }
-            if (name != "") {
+            if (name != "" && open==1) {
                 places.append(Place(id: id, name: name, open: open, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image))
                 id += 1
             }
