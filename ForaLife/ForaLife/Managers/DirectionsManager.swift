@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 import SwiftUI
 
-struct DirectionsManager: UIViewRepresentable {
+/*struct DirectionsManager: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         <#code#>
     }
@@ -21,4 +21,4 @@ struct DirectionsManager: UIViewRepresentable {
         <#code#>
     }
     
-}
+}*/
