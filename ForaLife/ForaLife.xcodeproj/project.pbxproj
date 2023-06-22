@@ -28,7 +28,6 @@
 		1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B85622A421DD100CDBE9D /* AddressLocation.swift */; };
 		1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B85652A421EF700CDBE9D /* Alamofire */; };
 		1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */; };
-		1A7F20F02A428DBE00E66342 /* SwiftKueryMySQL in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7F20EF2A428DBE00E66342 /* SwiftKueryMySQL */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
 /* End PBXBuildFile section */
@@ -83,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A7F20F02A428DBE00E66342 /* SwiftKueryMySQL in Frameworks */,
 				1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +216,6 @@
 			name = ForaLife;
 			packageProductDependencies = (
 				1A2B85652A421EF700CDBE9D /* Alamofire */,
-				1A7F20EF2A428DBE00E66342 /* SwiftKueryMySQL */,
 			);
 			productName = ForaLife;
 			productReference = 1A1735952A3B93D5006D713C /* ForaLife.app */;
@@ -700,11 +697,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A2B85642A421EF700CDBE9D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		1A7F20EF2A428DBE00E66342 /* SwiftKueryMySQL */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A7F20EE2A428DBE00E66342 /* XCRemoteSwiftPackageReference "SwiftKueryMySQL" */;
-			productName = SwiftKueryMySQL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -35,7 +35,7 @@ class NearPlacesManager: NSObject, ObservableObject{
         }
     }
     
-    func searchNearbyPlaces(location: String, typeOfPlace: String, apiKey: String) -> [Place] {
+    func searchNearbyPlaces(location: String, typeOfPlace: String, apiKey: String, completion: @escaping ([Place]) -> Void) {
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         var places: [Place] = []
         let parameters: [String: Any] = [
@@ -48,17 +48,21 @@ class NearPlacesManager: NSObject, ObservableObject{
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             switch response.result {
             case .success(let value):
-                // Maneja la respuesta exitosa aquí
-                print(value)
-                if let json = value as? [[String: Any]] {
-                    places = self.unwrapFoundResults(json: json, typeOfPlace: typeOfPlace)
+                print(response.result)
+                if let json = value as? [String: Any], let results = json["results"] as? [[String: Any]] {
+                    
+                    places = self.unwrapFoundResults(json: results, typeOfPlace: typeOfPlace)
+                    completion(places) // Llama al bloque de finalización con el resultado
+                } else {
+                    print("No se pudo convertir el archivo JSON a un arreglo de diccionarios")
+                    completion([]) // Llama al bloque de finalización con una lista vacía en caso de error
                 }
             case .failure(let error):
                 // Maneja el error aquí
                 print(error)
+                completion([]) // Llama al bloque de finalización con una lista vacía en caso de error
             }
         }
-        return places
     }
     
     func unwrapFoundResults(json: [[String: Any]], typeOfPlace: String) -> [Place] {
@@ -69,7 +73,7 @@ class NearPlacesManager: NSObject, ObservableObject{
         var rating: Double = -1.0
         var latitude: Double = 0.0
         var longitude: Double = 0.0
-        var image: Image = Image(systemName: "fork.knife")
+        var image: Image = Image(systemName: "fork.knife.circle")
         
         switch typeOfPlace {
         case "supermarket":
@@ -81,22 +85,22 @@ class NearPlacesManager: NSObject, ObservableObject{
         case "taxi_stop":
             image = Image(systemName: "bus.fill")
         default:
-            image = Image(systemName: "fork.knife")
+            image = Image(systemName: "fork.knife.circle")
         }
         
+        var id: Int = 0
         for item in json {
-            var id: Int = 0
-            
+            print("elemento \(id)")
             for (key, value) in item {
-                if key == "name" {
+                if key == "name"{
                     name = value as! String
                 }
-                if key == "open_now" {
-                    open = value as! Int
+                if key == "opening_hours", let  opening_Hours = value as? [String: Any]{
+                    open = opening_Hours["open_now"] as? Int ?? -1
                 }
+
                 if key == "price_level" {
                     priceLevel = value as! Int
-                    print(priceLevel)
                 }
                 if key == "rating" {
                     rating = value as! Double
@@ -107,11 +111,11 @@ class NearPlacesManager: NSObject, ObservableObject{
                         longitude = location["lng"] as? Double ?? 0.0
                     }
                 }
-                print(name)
             }
-            
-            places.append(Place(id: id, name: name, open: open, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image))
-            id += 1
+            if (name != "") {
+                places.append(Place(id: id, name: name, open: open, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image))
+                id += 1
+            }
         }
         
         return places
