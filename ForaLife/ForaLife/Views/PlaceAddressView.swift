@@ -9,16 +9,21 @@ import SwiftUI
 
 struct PlaceAddressView: View {
     //con routes de la direccion de entrada trazar mapa hacia el destino
-    @State var latitude: Double
-    @State var longitude: Double
+    let sourceLatitude: Double
+    let sourceLongitude: Double
+    let destinationLatitude: Double
+    let destinationLongitude: Double
     var body: some View {
-        Text("\(latitude),\(longitude)")
+        VStack{
+            DirectionsManager(sourceLatitude: sourceLatitude, sourceLongitude: sourceLongitude, destinationLatitude: destinationLatitude, destinationLongitude: destinationLongitude)
+            Spacer()
+        }
     }
 }
 
 
 struct PlaceAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceAddressView(latitude:0.0,longitude:0.0)
+        PlaceAddressView(sourceLatitude: 0.0, sourceLongitude: 0.0, destinationLatitude: 0.0, destinationLongitude: 0.0)
     }
 }
