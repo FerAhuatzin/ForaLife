@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-//crear un arreglo similar llamando a una clase que te permita hacer busquedas conn¡ base a la ubicación o a la dirección del usuario, una vez que hace esas búsquedas los mete en un arreglo con los datos que necesita Place
-/*private let places = [
-    Place(id:0,name:"MrTaco",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "150",address: "Atzala"),
-    Place(id:1,name:"Las kekas",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "80",address: "La Meza"),
-    Place(id:2,name:"La terraza",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "110",address: "14 oriente"),
-    Place(id:3,name:"Las berenjena",image: Image(systemName: "fork.knife.circle"), openingHour: "3:00", closingHour: "12:00", averagePrice: "180",address: "8 norte")
-]*/
-
 struct NearPlacesView: View {
     @State var place: String
     @State var typeOfPlace: String
@@ -34,7 +26,6 @@ struct NearPlacesView: View {
         NavigationStack{
             VStack {
                 Text(place)
-                    .padding()
                     .font(.title)
                     .bold()
                     .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
@@ -54,7 +45,7 @@ struct NearPlacesView: View {
                     }
                 Spacer()
                 List (placesArray, id: \.id){place in
-                    NearPlaceRow(place: place)
+                    NearPlaceRow(place: place, sourceLatitude: latitude, sourceLongitude: longitude)
                 }
                 Spacer()
                 

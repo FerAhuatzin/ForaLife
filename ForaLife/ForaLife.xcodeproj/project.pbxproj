@@ -180,8 +180,8 @@
 				1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */,
 				1A12759E2A3D126900187595 /* NearPlacesView.swift */,
 				1A1275A32A3D1F9000187595 /* NearPlaceRow.swift */,
-				1A1275A52A3D258B00187595 /* Footer.swift */,
 				1A1275AD2A3D33E900187595 /* PlaceAddressView.swift */,
+				1A1275A52A3D258B00187595 /* Footer.swift */,
 				1A1275AF2A3D367300187595 /* ProfileView.swift */,
 				1A1275B12A3D369400187595 /* AboutTheAppView.swift */,
 			);
