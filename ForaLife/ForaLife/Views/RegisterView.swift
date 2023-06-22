@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RegisterView: View {
     @State var username: String = ""
@@ -16,6 +17,11 @@ struct RegisterView: View {
     @State var city: String = ""
     @State var zip: String = ""
     @State var correctRegister: Bool = false
+    let kusername = ""
+    let kaddress = ""
+    let kpass = ""
+    let kcpass = ""
+
     
     
     
@@ -103,6 +109,29 @@ struct RegisterView: View {
                         userAddress = "\(street) \(number) \(city) \(zip)"
                         let manager = AddressLocationManager()
                         manager.convertAddressToCoordinates(address: userAddress)
+                        
+                        
+                        
+                        //-MARK: Save User Preferences
+                        UserDefaults.standard.set(username, forKey: kusername)
+                        UserDefaults.standard.set(password, forKey: kpass)
+                        UserDefaults.standard.set(confirmedPassword, forKey: kcpass)
+                        UserDefaults.standard.set(userAddress, forKey: kaddress)
+                        UserDefaults.standard.synchronize()
+                        //showAlert(message: "Se han guardado tus datos", viewController: self)
+                        
+                        
+                        
+                        
+                        //- MARK: Get user Preferences
+                        
+                        UserDefaults.standard.string(forKey: kusername)
+                        UserDefaults.standard.string(forKey: kpass)
+                        UserDefaults.standard.string(forKey: kcpass)
+                        UserDefaults.standard.string(forKey: kaddress)
+                    
+                        
+                        
                     }
                     .padding()
                     .foregroundColor(Color.white )
@@ -132,4 +161,10 @@ struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
     }
+}
+
+private func showAlert(message: String, viewController: UIViewController) {
+    let alert = UIAlertController(title: "My User Default", message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default,handler: nil))
+    viewController.present(alert, animated: true, completion: nil)
 }
