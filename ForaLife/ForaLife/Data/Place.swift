@@ -17,4 +17,8 @@ struct Place {
     var longitude: Double
     var image: Image
     var distanceToPlace: Double
+    
+    static func < (lhs: Place, rhs: Place) -> Bool {
+           return lhs.distanceToPlace < rhs.distanceToPlace
+    }
 }
