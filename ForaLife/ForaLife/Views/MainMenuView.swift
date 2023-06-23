@@ -94,6 +94,20 @@ struct MainMenuView: View {
                             }
                         }
                         
+                        HStack {
+                            Image(systemName:"fork.knife.circle")
+                                .resizable()
+                                .frame(width: 50, height:50)
+                                .padding()
+                            Text("Comunidad")
+                                .font(.title2)
+                                .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
+                            NavigationLink(destination: CommunityView()) {
+                                EmptyView()
+                            }
+                        }
+
+                        
                     }
                     
                     
