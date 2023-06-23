@@ -27,9 +27,9 @@
 		1A2B85602A421D8000CDBE9D /* SearchLoctionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */; };
 		1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B85622A421DD100CDBE9D /* AddressLocation.swift */; };
 		1A2B85662A421EF700CDBE9D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B85652A421EF700CDBE9D /* Alamofire */; };
+		1A6BEF742A452AB900BA7C59 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6BEF732A452AB900BA7C59 /* CommunityView.swift */; };
 		1A7CCCB22A43E68B0003E2E2 /* DirectionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */; };
 		1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */; };
-		1AA30FA82A44DC6A0027ED1B /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
 /* End PBXBuildFile section */
@@ -74,9 +74,9 @@
 		1A2B855D2A421D5800CDBE9D /* NearPlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearPlacesManager.swift; sourceTree = "<group>"; };
 		1A2B855F2A421D8000CDBE9D /* SearchLoctionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLoctionManager.swift; sourceTree = "<group>"; };
 		1A2B85622A421DD100CDBE9D /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
+		1A6BEF732A452AB900BA7C59 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsManager.swift; sourceTree = "<group>"; };
 		1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLManager.swift; sourceTree = "<group>"; };
-		1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +186,7 @@
 				1A1275AD2A3D33E900187595 /* PlaceAddressView.swift */,
 				1A1275AF2A3D367300187595 /* ProfileView.swift */,
 				1A1275B12A3D369400187595 /* AboutTheAppView.swift */,
+				1A6BEF732A452AB900BA7C59 /* CommunityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 				1AC6A6A02A4225370085E82E /* adressLocationManager.swift */,
 				1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */,
 				1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */,
-				1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -341,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A6BEF742A452AB900BA7C59 /* CommunityView.swift in Sources */,
 				1A2B85602A421D8000CDBE9D /* SearchLoctionManager.swift in Sources */,
 				1A12759F2A3D126900187595 /* NearPlacesView.swift in Sources */,
 				1A1275A42A3D1F9000187595 /* NearPlaceRow.swift in Sources */,
@@ -357,7 +358,6 @@
 				1A1275AE2A3D33E900187595 /* PlaceAddressView.swift in Sources */,
 				1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */,
 				1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */,
-				1AA30FA82A44DC6A0027ED1B /* RegisterManager.swift in Sources */,
 				1A2B855E2A421D5800CDBE9D /* NearPlacesManager.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
