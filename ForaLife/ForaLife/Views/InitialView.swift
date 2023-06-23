@@ -11,6 +11,8 @@ struct InitialView: View {
     @State var username: String = ""
     @State var password: String = ""
     @State var correctCredentials: Bool = false
+    @State var showBorders: Bool = false
+    let sessionManager = SessionManager()
 var body: some View {
 NavigationStack {
     
@@ -30,23 +32,27 @@ NavigationStack {
                     .bold()
                     .padding()
                     .font(.largeTitle)
-                
                 TextField("Usuario", text: $username)
                     .padding()
                     .frame(width:300, height:50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                
-                
+                    .border(showBorders ? Color.red : Color.clear)
                 SecureField("Contraseña", text: $password)
                     .padding()
                     .frame(width:300, height:50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
-                    
+                    .border(showBorders ? Color.red : Color.clear)
                 Button("Confirmar") {
                     //comprobar usuario y contraseña correcta en base de datos/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                    correctCredentials = true
+                    correctCredentials = sessionManager.compareProfile(username: username, password: password)
+                    if !correctCredentials {
+                        showBorders = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            showBorders = false
+                        }
+                    }     
                 }
                 .padding()
                 .foregroundColor(Color.white )
@@ -54,7 +60,6 @@ NavigationStack {
                 .background(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 .cornerRadius(10)
                 .padding()
-                
                 Text("¿Es nuevo usuario?")
                 NavigationLink(destination: RegisterView()) {
                     Text("Cree su cuenta")

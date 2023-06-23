@@ -31,6 +31,7 @@
 		1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
+		1AE4345A2A4512210070986C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE434592A4512210070986C /* SessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLManager.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
+		1AE434592A4512210070986C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				1AC6A6A02A4225370085E82E /* adressLocationManager.swift */,
 				1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */,
 				1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */,
+				1AE434592A4512210070986C /* SessionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				1A2B85602A421D8000CDBE9D /* SearchLoctionManager.swift in Sources */,
 				1A12759F2A3D126900187595 /* NearPlacesView.swift in Sources */,
 				1A1275A42A3D1F9000187595 /* NearPlaceRow.swift in Sources */,
+				1AE4345A2A4512210070986C /* SessionManager.swift in Sources */,
 				1A1275B02A3D367300187595 /* ProfileView.swift in Sources */,
 				1A1735C52A3B94AA006D713C /* InitialView.swift in Sources */,
 				1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */,
