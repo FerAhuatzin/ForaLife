@@ -5,6 +5,12 @@
 //  Created by Fernando Ahuatzin Gallardo on 15/06/23.
 //
 
+
+
+
+
+
+
 import SwiftUI
 import UIKit
 
@@ -24,7 +30,9 @@ struct RegisterView: View {
     
     
     @State var userAddress: String = ""
-
+    
+    @State private var selectedUniversity = 0
+        let universities = ["UDLAP", "BUAP", "Tecnologico de Monterrey", "Ibero Puebla", "Anahuac Puebla", "UPAEP"]
     
     
     
@@ -67,6 +75,16 @@ struct RegisterView: View {
                         .frame(width:300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
+                    
+                    
+                    Picker(selection: $selectedUniversity, label: Text("Picker")
+                                                            .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
+                                                        Text("Selecciona tu universidad")
+                                                        ForEach(0..<universities.count) { index in
+                                                            Text(universities[index]).tag(index + 1)
+                                                        }
+                                                    }
+                                                    .padding(.top)
                     
                     Text ("Dirección")
                         .bold()
@@ -170,3 +188,5 @@ private func showAlert(message: String, viewController: UIViewController) {
     alert.addAction(UIAlertAction(title: "OK", style: .default,handler: nil))
     viewController.present(alert, animated: true, completion: nil)
 }
+
+
