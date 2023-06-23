@@ -12,6 +12,7 @@ struct InitialView: View {
     @State var password: String = ""
     @State var correctCredentials: Bool = false
     @State var showBorders: Bool = false
+    @ObservedObject var currentLocationManager = CurrentLocationManager()
     let sessionManager = SessionManager()
 var body: some View {
 NavigationStack {

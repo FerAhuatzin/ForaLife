@@ -16,4 +16,5 @@ struct Place {
     var latitude: Double
     var longitude: Double
     var image: Image
+    var distanceToPlace: Double
 }
