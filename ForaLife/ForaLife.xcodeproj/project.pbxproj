@@ -32,6 +32,7 @@
 		1AA30FA82A44DC6A0027ED1B /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */; };
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
+		1AE4345C2A451DC90070986C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4345B2A451DC90070986C /* SessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
+		1AE4345B2A451DC90070986C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */,
 				1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */,
 				1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */,
+				1AE4345B2A451DC90070986C /* SessionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				1A1275B22A3D369400187595 /* AboutTheAppView.swift in Sources */,
 				1AA30FA82A44DC6A0027ED1B /* RegisterManager.swift in Sources */,
 				1A2B855E2A421D5800CDBE9D /* NearPlacesManager.swift in Sources */,
+				1AE4345C2A451DC90070986C /* SessionManager.swift in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
