@@ -81,6 +81,7 @@
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 		1AE4345B2A451DC90070986C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		1AE4345D2A452D7B0070986C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +142,7 @@
 		1A1735972A3B93D5006D713C /* ForaLife */ = {
 			isa = PBXGroup;
 			children = (
+				1AE4345D2A452D7B0070986C /* Info.plist */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
 				1A1275A02A3D1E0E00187595 /* Data */,
 				1A2B855A2A421D1200CDBE9D /* Managers */,
@@ -524,6 +526,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForaLife/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para poder mostrarle las mejores recomendaciones cerca de su ubicación actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -553,6 +556,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ForaLife/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ForaLife/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Se usará para poder mostrarle las mejores recomendaciones cerca de su ubicación actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

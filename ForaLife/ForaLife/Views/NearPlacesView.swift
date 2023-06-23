@@ -16,7 +16,7 @@ struct NearPlacesView: View {
     @State var longitude = 0.0
     @State var addressLocation =  AddressLocation(latitude:  19.05174801886088 , longitude: -98.28527204225016)
     @State var placesArray: [Place] = []
-    @StateObject var currrentLocation = CurrentLocationManager()
+    @ObservedObject var currrentLocation = CurrentLocationManager()
     let nearPlacesManager = NearPlacesManager()
     let searchLocationManager = SearchLocationManager()
     
@@ -37,8 +37,7 @@ struct NearPlacesView: View {
                         // Llama al método de búsqueda al aparecer la vista
                         latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
                         longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
-                        //nearPlacesManager.searchPlacesNearby(latitude: latitude, longitude: longitude, typeOfPlace: place)
-                       nearPlacesManager.searchNearbyPlaces(location: "\(latitude),\(longitude)",typeOfPlace: typeOfPlace, apiKey: "AIzaSyDIuYq_slSbTjd7HGPN4rajtz1RvuquHr0") { places in
+                        nearPlacesManager.searchNearbyPlaces(sourceLatitude:latitude,sourceLongitude: longitude,typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js") { places in
                             placesArray = places
                         }
                         
