@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RegisterView: View {
     @State var username: String = ""
@@ -16,6 +17,7 @@ struct RegisterView: View {
     @State var city: String = ""
     @State var zip: String = ""
     @State var correctRegister: Bool = false
+
     
     
     
@@ -103,6 +105,35 @@ struct RegisterView: View {
                         userAddress = "\(street) \(number) \(city) \(zip)"
                         let manager = AddressLocationManager()
                         manager.convertAddressToCoordinates(address: userAddress)
+                        
+                        
+                        
+                        //-MARK: Save User Preferences
+                        UserDefaults.standard.set(username, forKey: "Username")
+                        UserDefaults.standard.set(password, forKey: "Password")
+                        UserDefaults.standard.set(confirmedPassword, forKey: "CPassword")
+                        UserDefaults.standard.set(userAddress, forKey: "Address")
+                        //UserDefaults.standard.synchronize()
+                        //showAlert(message: "Se han guardado tus datos", viewController: self)
+                        
+                        
+                        
+                        
+                        //- MARK: Get user Preferences
+                        
+                       
+                        
+                        
+                        
+                        let kusername =  UserDefaults.standard.string(forKey: "Username")
+                        let kaddress = UserDefaults.standard.string(forKey: "Address")
+                        let kpass = UserDefaults.standard.string(forKey: "Password")
+                        let kcpass = UserDefaults.standard.string(forKey: "CPassword")
+                        //UserDefaults.standard.synchronize()
+
+                            print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")
+                        
+                        
                     }
                     .padding()
                     .foregroundColor(Color.white )
@@ -132,4 +163,10 @@ struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
     }
+}
+
+private func showAlert(message: String, viewController: UIViewController) {
+    let alert = UIAlertController(title: "My User Default", message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default,handler: nil))
+    viewController.present(alert, animated: true, completion: nil)
 }
