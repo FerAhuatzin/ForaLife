@@ -33,6 +33,8 @@
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
 		1AE4345C2A451DC90070986C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4345B2A451DC90070986C /* SessionManager.swift */; };
+		E42E0BCB2A4610B600D03312 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E0BCA2A4610B600D03312 /* DBHelper.swift */; };
+		E42E0BCD2A4610D200D03312 /* ForaLife.db in Resources */ = {isa = PBXBuildFile; fileRef = E42E0BCC2A4610D200D03312 /* ForaLife.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 		1AE4345B2A451DC90070986C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		E42E0BCA2A4610B600D03312 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		E42E0BCC2A4610D200D03312 /* ForaLife.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ForaLife.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 		1A1735972A3B93D5006D713C /* ForaLife */ = {
 			isa = PBXGroup;
 			children = (
+				E42E0BCE2A46110900D03312 /* Database */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
 				1A1275A02A3D1E0E00187595 /* Data */,
 				1A2B855A2A421D1200CDBE9D /* Managers */,
@@ -205,6 +210,15 @@
 				1AE4345B2A451DC90070986C /* SessionManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		E42E0BCE2A46110900D03312 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				E42E0BCC2A4610D200D03312 /* ForaLife.db */,
+				E42E0BCA2A4610B600D03312 /* DBHelper.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42E0BCD2A4610D200D03312 /* ForaLife.db in Resources */,
 				1A1735A02A3B93D6006D713C /* Preview Assets.xcassets in Resources */,
 				1A17359D2A3B93D6006D713C /* Assets.xcassets in Resources */,
 			);
@@ -354,6 +369,7 @@
 				1A1275A22A3D1E2200187595 /* Place.swift in Sources */,
 				1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */,
 				1A7CCCB22A43E68B0003E2E2 /* DirectionsManager.swift in Sources */,
+				E42E0BCB2A4610B600D03312 /* DBHelper.swift in Sources */,
 				1A2B855C2A421D3800CDBE9D /* CurrentLocationManager.swift in Sources */,
 				1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */,
 				1A1275A62A3D258B00187595 /* Footer.swift in Sources */,
