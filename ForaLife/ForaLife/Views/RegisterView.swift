@@ -17,10 +17,6 @@ struct RegisterView: View {
     @State var city: String = ""
     @State var zip: String = ""
     @State var correctRegister: Bool = false
-    let kusername = ""
-    let kaddress = ""
-    let kpass = ""
-    let kcpass = ""
 
     
     
@@ -113,11 +109,11 @@ struct RegisterView: View {
                         
                         
                         //-MARK: Save User Preferences
-                        UserDefaults.standard.set(username, forKey: kusername)
-                        UserDefaults.standard.set(password, forKey: kpass)
-                        UserDefaults.standard.set(confirmedPassword, forKey: kcpass)
-                        UserDefaults.standard.set(userAddress, forKey: kaddress)
-                        UserDefaults.standard.synchronize()
+                        UserDefaults.standard.set(username, forKey: "Username")
+                        UserDefaults.standard.set(password, forKey: "Password")
+                        UserDefaults.standard.set(confirmedPassword, forKey: "CPassword")
+                        UserDefaults.standard.set(userAddress, forKey: "Address")
+                        //UserDefaults.standard.synchronize()
                         //showAlert(message: "Se han guardado tus datos", viewController: self)
                         
                         
@@ -125,11 +121,17 @@ struct RegisterView: View {
                         
                         //- MARK: Get user Preferences
                         
-                        UserDefaults.standard.string(forKey: kusername)
-                        UserDefaults.standard.string(forKey: kpass)
-                        UserDefaults.standard.string(forKey: kcpass)
-                        UserDefaults.standard.string(forKey: kaddress)
-                    
+                       
+                        
+                        
+                        
+                        let kusername =  UserDefaults.standard.string(forKey: "Username")
+                        let kaddress = UserDefaults.standard.string(forKey: "Address")
+                        let kpass = UserDefaults.standard.string(forKey: "Password")
+                        let kcpass = UserDefaults.standard.string(forKey: "CPassword")
+                        //UserDefaults.standard.synchronize()
+
+                            print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")
                         
                         
                     }
