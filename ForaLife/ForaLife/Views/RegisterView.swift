@@ -22,17 +22,14 @@ struct RegisterView: View {
     @State var number: String = ""
     @State var city: String = ""
     @State var zip: String = ""
+    @State var university: String = ""
     @State var correctRegister: Bool = false
-
-    
-    
-    
-    
-    
+    @State var phase: Bool = false
+    let sessionManager = SessionManager()
     @State var userAddress: String = ""
-    
+    @State var showBorders: [Bool] = [false,false,false,false,false,false,false,false]
     @State private var selectedUniversity = 0
-        let universities = ["UDLAP", "BUAP", "Tecnologico de Monterrey", "Ibero Puebla", "Anahuac Puebla", "UPAEP"]
+    let universities = ["UDLAP", "BUAP", "Tecnologico de Monterrey", "Ibero Puebla", "Anahuac Puebla", "UPAEP"]
     
     
     
@@ -69,19 +66,20 @@ struct RegisterView: View {
                         .frame(width:300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
-                   
+                        .border(showBorders[0] ? Color.red : Color.clear)
+                    
                     SecureField("Confirmar contraseña", text: $confirmedPassword)
                         .padding()
                         .frame(width:300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
-                    
+                        .border(showBorders[1] ? Color.red : Color.clear)
                     
                     Picker(selection: $selectedUniversity, label: Text("Picker")
                                                             .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
                                                         Text("Selecciona tu universidad")
                                                         ForEach(0..<universities.count) { index in
-                                                            Text(universities[index]).tag(index + 1)
+                                                            Text(universities[index]).tag(index + 1)           
                                                         }
                                                     }
                                                     .padding(.top)
@@ -119,38 +117,49 @@ struct RegisterView: View {
                         
                     Button("Crear cuenta") {
                         //Verificar contraseña es igual, guardar en base de datos usuario, contraseña, direccion y coordenadas de la direccion y mostrar ventana confirmación cuenta
-                        correctRegister = true
-                        userAddress = "\(street) \(number) \(city) \(zip)"
-                        let manager = AddressLocationManager()
-                        manager.convertAddressToCoordinates(address: userAddress)
-                        
-                        
-                        
-                        //-MARK: Save User Preferences
-                        UserDefaults.standard.set(username, forKey: "Username")
-                        UserDefaults.standard.set(password, forKey: "Password")
-                        UserDefaults.standard.set(confirmedPassword, forKey: "CPassword")
-                        UserDefaults.standard.set(userAddress, forKey: "Address")
-                        //UserDefaults.standard.synchronize()
-                        //showAlert(message: "Se han guardado tus datos", viewController: self)
-                        
-                        
-                        
-                        
-                        //- MARK: Get user Preferences
-                        
-                       
-                        
-                        
-                        
-                        let kusername =  UserDefaults.standard.string(forKey: "Username")
-                        let kaddress = UserDefaults.standard.string(forKey: "Address")
-                        let kpass = UserDefaults.standard.string(forKey: "Password")
-                        let kcpass = UserDefaults.standard.string(forKey: "CPassword")
-                        //UserDefaults.standard.synchronize()
+                        phase = sessionManager.comparePassword(password: password, verifiedPassword: confirmedPassword)
+                        if !phase {
+                            showBorders[0] = true
+                            showBorders[1] = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                showBorders[0] = false
+                                showBorders[1] = false
+                            }
+                        }
+                        else {
+                            correctRegister = true
+                            //aqui se manda a llamar para ver que no haya espacios vacios si el arreglo esta vacio correctRegister es true
+                            userAddress = "\(street) \(number) \(city) \(zip)"
+                            let manager = AddressLocationManager()
+                            manager.convertAddressToCoordinates(address: userAddress)
+                            
+                            
+                            
+                            //-MARK: Save User Preferences
+                            UserDefaults.standard.set(username, forKey: "Username")
+                            UserDefaults.standard.set(password, forKey: "Password")
+                            UserDefaults.standard.set(confirmedPassword, forKey: "CPassword")
+                            UserDefaults.standard.set(userAddress, forKey: "Address")
+                            //UserDefaults.standard.synchronize()
+                            //showAlert(message: "Se han guardado tus datos", viewController: self)
+                            
+                            
+                            
+                            
+                            //- MARK: Get user Preferences
+                            
+                           
+                            
+                            
+                            
+                            let kusername =  UserDefaults.standard.string(forKey: "Username")
+                            let kaddress = UserDefaults.standard.string(forKey: "Address")
+                            let kpass = UserDefaults.standard.string(forKey: "Password")
+                            let kcpass = UserDefaults.standard.string(forKey: "CPassword")
+                            //UserDefaults.standard.synchronize()
 
-                            print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")
-                        
+                                print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")
+                        }
                         
                     }
                     .padding()

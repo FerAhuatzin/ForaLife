@@ -14,6 +14,7 @@ struct NearPlacesView: View {
     @State var departingPlace: String = "hogar"
     @State var latitude = 0.0
     @State var longitude = 0.0
+    @State var alreadyEntered = false
     @State var addressLocation =  AddressLocation(latitude:  19.05174801886088 , longitude: -98.28527204225016)
     @State var placesArray: [Place] = []
     @ObservedObject var currrentLocation = CurrentLocationManager()
@@ -35,12 +36,14 @@ struct NearPlacesView: View {
                     .multilineTextAlignment(.center)
                     .onAppear {
                         // Llama al método de búsqueda al aparecer la vista
-                        latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
-                        longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
-                        nearPlacesManager.searchNearbyPlaces(sourceLatitude:latitude,sourceLongitude: longitude,typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js") { places in
-                            placesArray = places
+                        if !alreadyEntered{
+                            latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                            longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
+                            nearPlacesManager.searchNearbyPlaces(sourceLatitude:latitude,sourceLongitude: longitude,typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js") { places in
+                                placesArray = places
+                            }
+                            alreadyEntered  = true
                         }
-                        
                     }
                 Spacer()
                 List (placesArray, id: \.id){place in

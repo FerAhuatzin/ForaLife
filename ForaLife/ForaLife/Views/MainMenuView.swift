@@ -95,9 +95,9 @@ struct MainMenuView: View {
                         }
                         
                         HStack {
-                            Image(systemName:"fork.knife.circle")
+                            Image(systemName:"person.3.fill")
                                 .resizable()
-                                .frame(width: 50, height:50)
+                                .frame(width: 50, height:25)
                                 .padding()
                             Text("Comunidad")
                                 .font(.title2)
