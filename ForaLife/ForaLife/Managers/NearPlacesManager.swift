@@ -36,7 +36,6 @@ class NearPlacesManager: NSObject, ObservableObject{
     
     func searchNearbyPlaces(sourceLatitude: Double, sourceLongitude: Double, typeOfPlace: String, apiKey: String, completion: @escaping ([Place]) -> Void) {
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-        var places: [Place] = []
         let parameters: [String: Any] = [
             "location": "\(sourceLatitude),\(sourceLongitude)", // La ubicación en formato de latitud,longitud (ejemplo: "37.7749,-122.4194")
             "radius": "1000", // Radio en metros para la búsqueda de lugares cercanos
@@ -66,18 +65,9 @@ class NearPlacesManager: NSObject, ObservableObject{
         }
     }
     
-    func unwrapFoundResults(json: [[String: Any]], typeOfPlace: String, sourceLatitude: Double, sourceLongitude: Double, apiKey: String, completion: @escaping ([Place]) -> Void)  {
+    func unwrapFoundResults(json: [[String: Any]], typeOfPlace: String, sourceLatitude: Double, sourceLongitude: Double, apiKey: String, completion: @escaping ([Place]) -> Void) {
         var places: [Place] = []
-        var name: String = ""
-        var open: Int = -1
-        var priceLevel: Int = 0
-        var rating: Double = -1.0
-        var latitude: Double = 0.0
-        var longitude: Double = 0.0
-        var image: Image = Image(systemName: "fork.knife.circle")
-        var distanceToPlace: Double = 0.0
-        var businessStatus: String = ""
-        
+        var image: Image = Image(systemName: "person.fill")
         switch typeOfPlace {
         case "grocery":
             image = Image(systemName: "cart.circle")
@@ -90,17 +80,27 @@ class NearPlacesManager: NSObject, ObservableObject{
         default:
             image = Image(systemName: "fork.knife.circle")
         }
+        
         let group = DispatchGroup()
         var id: Int = 0
+        
         for item in json {
+            var name: String = ""
+            var open: Int = -1
+            var priceLevel: Int = 0
+            var rating: Double = -1.0
+            var latitude: Double = 0.0
+            var longitude: Double = 0.0
+            var distanceToPlace: Double = 0.0
+            var businessStatus: String = ""
+            
             for (key, value) in item {
-                if key == "name"{
+                if key == "name" {
                     name = value as! String
                 }
-                if key == "opening_hours", let  opening_Hours = value as? [String: Any]{
+                if key == "opening_hours", let opening_Hours = value as? [String: Any] {
                     open = opening_Hours["open_now"] as? Int ?? -1
                 }
-
                 if key == "price_level" {
                     priceLevel = value as! Int
                 }
@@ -117,26 +117,27 @@ class NearPlacesManager: NSObject, ObservableObject{
                     businessStatus = value as! String
                 }
             }
-            if (name != "" && open==1 && businessStatus == "OPERATIONAL") {
-                group.enter()
-                   calculateDistance(from: "\(sourceLatitude),\(sourceLongitude)", to: "\(latitude),\(longitude)", apiKey: apiKey) { distance in
-                       if let distance = distance {
-                           distanceToPlace = distance
-                       }
-                       places.append(Place(id: id, name: name, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image, distanceToPlace: distanceToPlace))
-                       id += 1
-                       group.leave()
-                   }
-
-            }
             
+            if (name != "" && open == 1 && businessStatus == "OPERATIONAL") {
+                group.enter()
+                calculateDistance(from: "\(sourceLatitude),\(sourceLongitude)", to: "\(latitude),\(longitude)", apiKey: apiKey) { distance in
+                    if let distance = distance {
+                        distanceToPlace = distance
+                        places.append(Place(id: id, name: name, priceLevel: priceLevel, rating: rating, latitude: latitude, longitude: longitude, image: image, distanceToPlace: distanceToPlace))
+                        id += 1
+                    }
+                    group.leave()
+                }
+            }
         }
+        
         group.notify(queue: .main) {
-            //self.quickSort(&places, low: 0, high: places.count-1)
+            self.quickSortPlaces(&places, low: 0, high: places.count - 1)
             print(places)
             completion(places)
         }
     }
+
     
     func calculateDistance(from origin: String, to destination: String, apiKey: String, completion: @escaping (Double?) -> Void) {
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&key=\(apiKey)"
@@ -145,6 +146,7 @@ class NearPlacesManager: NSObject, ObservableObject{
             switch response.result {
             case .success(let value):
                 if let json = value as? [String: Any], let routes = json["routes"] as? [[String: Any]], let firstRoute = routes.first, let legs = firstRoute["legs"] as? [[String: Any]], let firstLeg = legs.first, let distance = firstLeg["distance"] as? [String: Any], let text = distance["text"] as? String {
+                    print(text)
                     let transformedDistance = self.transformStringDistanceToDouble(stringDistance: text)
                     completion(transformedDistance)
                 } else {
@@ -178,7 +180,7 @@ class NearPlacesManager: NSObject, ObservableObject{
         }
         switch prefix {
         case "k":
-            number = String((Double(number) ?? 1)*100)
+            number = String((Double(number) ?? 1)*1000)
             for char in number {
                 if char == "." {
                     break
@@ -203,8 +205,27 @@ class NearPlacesManager: NSObject, ObservableObject{
        return double
     }
   
-    func quickSort (array: [Place], low: Int, high: Int) {
+    func quickSortPlaces(_ places: inout [Place], low: Int, high: Int) {
+        if low < high {
+            let pivotIndex = partition(&places, low: low, high: high)
+            quickSortPlaces(&places, low: low, high: pivotIndex - 1)
+            quickSortPlaces(&places, low: pivotIndex + 1, high: high)
+        }
+    }
+
+    func partition(_ places: inout [Place], low: Int, high: Int) -> Int {
+        let pivot = places[high]
+        var i = low - 1
         
+        for j in low..<high {
+            if places[j].distanceToPlace < pivot.distanceToPlace {
+                i += 1
+                places.swapAt(i, j)
+            }
+        }
+        
+        places.swapAt(i + 1, high)
+        return i + 1
     }
     
 }

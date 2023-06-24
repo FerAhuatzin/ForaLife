@@ -23,4 +23,33 @@ class SessionManager {
         }
         return false
     }
+    
+    func checkValidInput (username: String, password: String, verifiedPassword: String, university: String, street: String, number: String, city: String, zip: String) -> [Int]{
+    var dataIndexes: [Int] = []
+        if username == "" {
+            dataIndexes.append(0)
+        }
+        if password == "" {
+            dataIndexes.append(1)
+        }
+        if verifiedPassword == "" {
+            dataIndexes.append(2)
+        }
+        if university == "" {
+            dataIndexes.append(3)
+        }
+        if street == "" {
+            dataIndexes.append(4)
+        }
+        if number == "" {
+            dataIndexes.append(5)
+        }
+        if city == "" {
+            dataIndexes.append(6)
+        }
+        if zip == "" {
+            dataIndexes.append(7)
+        }
+        return dataIndexes
+    }
 }
