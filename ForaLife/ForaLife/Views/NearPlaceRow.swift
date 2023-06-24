@@ -14,6 +14,7 @@ struct NearPlaceRow: View {
     @State var imageArray: [String] = []
     let imageName = "dollarsign.circle"
     @State var price: Int = 0
+    @State var alreadyEntered: Bool = false
     
     var body: some View {
         HStack {
@@ -22,11 +23,14 @@ struct NearPlaceRow: View {
                 .frame(width: 40, height:40)
                 .padding()
                 .onAppear{
-                    price = place.priceLevel
-                    for _ in 0..<price {
-                        imageArray.append(imageName)
+                    if !alreadyEntered {
+                        price = place.priceLevel
+                        for _ in 0..<price {
+                            imageArray.append(imageName)
+                        }
+                        alreadyEntered = true
                     }
-                    place.priceLevel = 0
+                    //place.priceLevel = 0
                 }
             Spacer()
             NavigationLink(destination: PlaceAddressView(sourceLatitude: sourceLatitude, sourceLongitude: sourceLongitude, destinationLatitude: place.latitude, destinationLongitude: place.longitude)){
@@ -40,8 +44,8 @@ struct NearPlaceRow: View {
                                 .resizable()
                                 .frame(width: 15, height: 15)
                                 .foregroundColor(Color.gray)
-                            }
                         }
+                    }
                     Text("Calificación\(place.rating)")
                         .foregroundColor(Color.gray)
                     Text("Ver ubicación")
