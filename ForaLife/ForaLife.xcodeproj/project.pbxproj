@@ -34,6 +34,8 @@
 		1AA5B5552A3BC72D0043D93F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */; };
 		1AC6A6A12A4225370085E82E /* adressLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6A6A02A4225370085E82E /* adressLocationManager.swift */; };
 		1AE4345C2A451DC90070986C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4345B2A451DC90070986C /* SessionManager.swift */; };
+		1AF397692A47C1C0007C27DD /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF397672A47C1C0007C27DD /* DataBase.xcdatamodeld */; };
+		1AF3976B2A47C22A007C27DD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF3976A2A47C22A007C27DD /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 		1AE4345B2A451DC90070986C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		1AE4345D2A452D7B0070986C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1AF397682A47C1C0007C27DD /* DataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataBase.xcdatamodel; sourceTree = "<group>"; };
+		1AF3976A2A47C22A007C27DD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 			children = (
 				1AE4345D2A452D7B0070986C /* Info.plist */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
+				1AF397672A47C1C0007C27DD /* DataBase.xcdatamodeld */,
 				1A1275A02A3D1E0E00187595 /* Data */,
 				1A2B855A2A421D1200CDBE9D /* Managers */,
 				1A1735C22A3B93EC006D713C /* Views */,
@@ -208,6 +213,7 @@
 				1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */,
 				1AA30FA72A44DC6A0027ED1B /* RegisterManager.swift */,
 				1AE4345B2A451DC90070986C /* SessionManager.swift */,
+				1AF3976A2A47C22A007C27DD /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 				1A7F20ED2A428CEA00E66342 /* MySQLManager.swift in Sources */,
 				1A1735C72A3B9505006D713C /* RegisterView.swift in Sources */,
 				1A1275A22A3D1E2200187595 /* Place.swift in Sources */,
+				1AF3976B2A47C22A007C27DD /* CoreDataManager.swift in Sources */,
 				1A2B85632A421DD100CDBE9D /* AddressLocation.swift in Sources */,
 				1A7CCCB22A43E68B0003E2E2 /* DirectionsManager.swift in Sources */,
 				1A2B855C2A421D3800CDBE9D /* CurrentLocationManager.swift in Sources */,
@@ -369,6 +376,7 @@
 				1AA30FA82A44DC6A0027ED1B /* RegisterManager.swift in Sources */,
 				1A2B855E2A421D5800CDBE9D /* NearPlacesManager.swift in Sources */,
 				1AE4345C2A451DC90070986C /* SessionManager.swift in Sources */,
+				1AF397692A47C1C0007C27DD /* DataBase.xcdatamodeld in Sources */,
 				1A1735992A3B93D5006D713C /* ForaLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,6 +727,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1AF397672A47C1C0007C27DD /* DataBase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1AF397682A47C1C0007C27DD /* DataBase.xcdatamodel */,
+			);
+			currentVersion = 1AF397682A47C1C0007C27DD /* DataBase.xcdatamodel */;
+			path = DataBase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1A17358D2A3B93D5006D713C /* Project object */;
 }

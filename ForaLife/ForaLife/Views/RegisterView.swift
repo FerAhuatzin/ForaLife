@@ -78,7 +78,7 @@ struct RegisterView: View {
                     
                     
                     Picker(selection: $selectedUniversity, label: Text("Picker")
-                                                            .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
+                                                    .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
                                                         Text("Selecciona tu universidad")
                                                         ForEach(0..<universities.count) { index in
                                                             Text(universities[index]).tag(index + 1)
