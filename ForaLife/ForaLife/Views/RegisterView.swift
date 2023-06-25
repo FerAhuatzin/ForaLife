@@ -76,13 +76,13 @@ struct RegisterView: View {
                         .border(showBorders[1] ? Color.red : Color.clear)
                     
                     Picker(selection: $selectedUniversity, label: Text("Picker")
-                                                            .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
-                                                        Text("Selecciona tu universidad")
-                                                        ForEach(0..<universities.count) { index in
-                                                            Text(universities[index]).tag(index + 1)           
-                                                        }
-                                                    }
-                                                    .padding(.top)
+                        .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
+                            Text("Selecciona tu universidad")
+                            ForEach(0..<universities.count) { index in
+                                Text(universities[index]).tag(index + 1)
+                            }
+                        }
+                        .padding(.top)
                     
                     Text ("Dirección")
                         .bold()
@@ -128,7 +128,7 @@ struct RegisterView: View {
                         }
                         else {
                             correctRegister = true
-                            //aqui se manda a llamar para ver que no haya espacios vacios si el arreglo esta vacio correctRegister es true
+                            //aqui se manda a llamar para ver que no haya espacios vacios si el arreglo esta vacio correctRegister es true si esta con elementos es false y se recorre el arreglo sacando los index para volver showBorders true en tales posiciones
                             userAddress = "\(street) \(number) \(city) \(zip)"
                             let manager = AddressLocationManager()
                             manager.convertAddressToCoordinates(address: userAddress)
