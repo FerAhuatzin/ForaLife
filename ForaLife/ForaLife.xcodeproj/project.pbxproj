@@ -81,7 +81,7 @@
 		1AA5B5542A3BC72D0043D93F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		1AC6A6A02A4225370085E82E /* adressLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adressLocationManager.swift; sourceTree = "<group>"; };
 		1AE4345B2A451DC90070986C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		1AE4345D2A452D7B0070986C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1AE4345D2A452D7B0070986C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
