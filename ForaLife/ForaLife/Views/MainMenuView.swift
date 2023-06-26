@@ -102,7 +102,7 @@ struct MainMenuView: View {
                             Text("Comunidad")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: CommunityView()) {
+                            NavigationLink(destination: CommunityView(university: user?.universityName ?? " ")) {
                                 EmptyView()
                             }
                         }

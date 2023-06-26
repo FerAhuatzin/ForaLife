@@ -7,90 +7,64 @@
 import SwiftUI
 
 struct CommunityView: View {
+    
+    let university: String
     @State var aportation: String = ""
-    //@State var place: Place
-    @State var imageArray: [String] = []
-    let imageName = "dollarsign.circle"
-    @State var price: Int = 0
-    @State var correctCredentials: Bool = false
+    @State var name: String = ""
+    @State var foreignPlaces: [ForeignPlaces]?
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
 var body: some View {
-NavigationStack {
 
-        ZStack {
-            Color(hue: 0.374, saturation: 0.846, brightness: 0.426)
-                .ignoresSafeArea()
 
-            Circle()
-                .scale(2.1)
-                .foregroundColor(.white.opacity(0.15))
-            Circle()
-                .scale(1.9)
-                .foregroundColor(.white)
             VStack(alignment: .center) {
 
                 Text("Lugares populares")
                     .bold()
                     .font(.largeTitle)
+                    .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
 
-                Text("cerca de tu universidad")
+                Text("cerca de: " + university)
                     .lineLimit(0)
                     .bold()
                     .font(.title)
-
-
-                HStack {
-                    /*
-                    place.image
-                        .resizable()
-                        .frame(width: 40, height:40)
-                        .padding()
-                        .onAppear{
-                            price = place.priceLevel
-                            for _ in 0..<price {
-                                imageArray.append(imageName)
-                            }
-                            place.priceLevel = 0
-                        }
-                    Spacer()
-                        VStack (alignment: .leading){
-                            Text(place.name)
-                                .bold()
-                                .foregroundColor(Color.black)
-                            HStack {
-                                ForEach(imageArray, id: \.self) { imageName in
-                                    Image(systemName: imageName)
-                                        .resizable()
-                                        .frame(width: 15, height: 15)
-                                        .foregroundColor(Color.gray)
-                                    }
-                                }
-                            Text("Calificación\(place.rating)")
-                                .foregroundColor(Color.gray)
-                            Text("Ver ubicación")
-                                .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                        }
-                    */
+                Spacer()
+                List(foreignPlaces ?? [], id: \.self) { place in
+                    CommunityViewRow(place: place)
+                    
                 }
-                .padding(.vertical, 30.0)
-                .frame(width:350, height:350)
-
-
-
+                .onAppear {
+                    CoreDataManager().showForeignPlaces(context: managedObjectContext)
+                    CoreDataManager().fetchForeignPlaces(universityName: university, context: managedObjectContext) { places in
+                        foreignPlaces = places ?? [ForeignPlaces()]
+                        if let firstPlace = foreignPlaces?.first {
+                            print("Primer lugar:"+(firstPlace.placeName ?? "---"))
+                        } else {
+                            print("Error al intentar sacar el primer elemento")
+                        }
+                    }
+                }
+                
 
                 Text("¿Conoces algun otro lugar?")
                     .bold()
                     .font(.title3)
-
-                TextField("Escribelo aqui", text: $aportation)
+                
+                TextField("Escribe el título del lugar aquí", text: $name)
                     .padding()
                     .frame(width:300, height:50)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
 
+                TextField("Escribe la descripción aquí", text: $aportation)
+                    .padding()
+                    .frame(width:300, height:100)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
 
-                Button("Confirmar") {
-                    //comprobar usuario y contraseña correcta en base de datos/@START_MENU_TOKEN@//@PLACEHOLDER=Action@/ /@END_MENU_TOKEN@/
-                    correctCredentials = true
+
+                Button("Enviar suerencia") {
+                    CoreDataManager().addForeignPlaces(placename: name, placeDescription: aportation, universityName: university, context: managedObjectContext)
                 }
                 .padding()
                 .foregroundColor(Color.white )
@@ -99,21 +73,21 @@ NavigationStack {
                 .cornerRadius(10)
                 .padding()
 
+                Spacer()
+                Footer()
 
             }
-        }
-        .navigationDestination(isPresented: $correctCredentials) {
+        
+        
 
-        }
-}
 
 }
 }
 
 
 
-struct CommunityView_Previews: PreviewProvider {
+/*struct CommunityView_Previews: PreviewProvider {
     static var previews: some View {
-        CommunityView()
+        CommunityView(university: "UDLAP")
     }
-}
+}*/

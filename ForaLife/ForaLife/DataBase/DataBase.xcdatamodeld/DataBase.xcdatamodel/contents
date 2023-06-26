@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ForeignPlaces" representedClassName="ForeignPlaces" syncable="YES" codeGenerationType="class">
-        <attribute name="placeDescription" optional="YES" attributeType="String"/>
+        <attribute name="placeInfo" optional="YES" attributeType="String"/>
+        <attribute name="placeName" optional="YES" attributeType="String"/>
         <attribute name="universityName" optional="YES" attributeType="String"/>
         <attribute name="verified" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>

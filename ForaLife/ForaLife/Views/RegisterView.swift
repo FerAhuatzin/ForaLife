@@ -147,7 +147,12 @@ struct RegisterView: View {
                                     longitude = receivedLongitude
                                     CoreDataManager().addUser(username: username, universityName: universities[selectedUniversity], password: password, longitude: longitude, latitude: latitude, address: userAddress, name: name, lastname: lastname, context: managedObjectContext)
                                     CoreDataManager().showUser(context: managedObjectContext)
+                                    //CoreDataManager().addForeignPlaces(placename: "Casa verde", placeDescription: "Los martes voy a casa verde que está en una privada a lado de Leudo para cenar gratis y luego saliendo voy a martes de casa de Chucho", universityName: universities[selectedUniversity], context: managedObjectContext)
+                                    //CoreDataManager().addForeignPlaces(placename: "Retas de fut", placeDescription: "De lunes a viernes hay retas como desde las 6:00 de la tarde hasta las 9:00 o hasta las 11:00 en la cancha de rápido que está atrás de ingenierías", universityName: universities[selectedUniversity], context: managedObjectContext)
+                                    
+                                    CoreDataManager().showForeignPlaces(context: managedObjectContext)
                                     //CoreDataManager().deleteUsers(context: managedObjectContext)
+                                    //CoreDataManager().deleteForeignPlaces(context: managedObjectContext)
                                     dismiss()
                                 } else {
                                     print("No se pudo obtener la latitud y longitud")
