@@ -116,16 +116,64 @@ class CoreDataManager: ObservableObject {
         save(context: context)
     }
     
-    func adForeignPlaces (placeDescription: String ,universityName: String, context: NSManagedObjectContext) {
+    func addForeignPlaces (placename: String ,placeDescription: String ,universityName: String, context: NSManagedObjectContext) {
         let foreignPlace = ForeignPlaces(context: context)
-        foreignPlace.placeDescription = placeDescription
+        foreignPlace.placeName = placename
+        foreignPlace.placeInfo = placeDescription
         foreignPlace.universityName = universityName
         foreignPlace.verified = false
         save(context: context)
     }
-    func editForeignPlaces (university: University, universityName: String, context: NSManagedObjectContext) {
-        university.universityName = universityName
+    func editForeignPlaces (foreignPlace: ForeignPlaces, placename: String ,placeDescription: String ,universityName: String, context: NSManagedObjectContext) {
+        foreignPlace.placeName = placename
+        foreignPlace.placeInfo = placeDescription
+        foreignPlace.universityName = universityName
         save(context: context)
     }
     
+    func fetchForeignPlaces (universityName: String, context: NSManagedObjectContext, completition: @escaping ([ForeignPlaces]?)-> Void) {
+        let fetchRequest: NSFetchRequest<ForeignPlaces> = ForeignPlaces.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "universityName == %@ AND verified == false", universityName)
+        print(universityName)
+        
+        do {
+            let places = try context.fetch(fetchRequest)
+            print(places)
+            completition(places)
+        } catch {
+            print("Error fetching user: \(error.localizedDescription)")
+            completition(nil)
+        }
+    }
+    
+    func showForeignPlaces(context: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<ForeignPlaces> = ForeignPlaces.fetchRequest()
+        
+        do {
+            let foreignPlaces = try context.fetch(fetchRequest)
+            for place in foreignPlaces {
+                print("Foreign place ID: \(place.objectID)")
+                print("University: \(place.universityName ?? "")")
+                print("Name: \(place.placeName ?? "")")
+                print("Description: \(place.placeInfo ?? "")")
+                print("Verified: \(place.verified )")
+                print("---------------------")
+            }
+        } catch {
+            print("Failed to fetch users: \(error.localizedDescription)")
+        }
+    }
+    
+    func deleteForeignPlaces(context: NSManagedObjectContext) {
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ForeignPlaces")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+                print("All users deleted successfully.")
+            } catch {
+                print("Error deleting users: \(error.localizedDescription)")
+            }
+        }
 }
