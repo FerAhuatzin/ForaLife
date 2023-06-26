@@ -12,7 +12,9 @@ struct InitialView: View {
     @State var password: String = ""
     @State var correctCredentials: Bool = false
     @State var showBorders: Bool = false
+    @State var user: User?
     @ObservedObject var currentLocationManager = CurrentLocationManager()
+    @Environment(\.managedObjectContext) var managedObjectContext
     let sessionManager = SessionManager()
 var body: some View {
 NavigationStack {
@@ -46,14 +48,18 @@ NavigationStack {
                     .cornerRadius(10)
                     .border(showBorders ? Color.red : Color.clear)
                 Button("Confirmar") {
-                    //comprobar usuario y contraseña correcta en base de datos/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                    correctCredentials = sessionManager.compareProfile(username: username, password: password)
-                    if !correctCredentials {
-                        showBorders = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            showBorders = false
+                    CoreDataManager().fetchUser(username: username, password: password, context: managedObjectContext) { credential, fetchedUser in
+                        user  = fetchedUser
+                        print(user?.name ?? " ")
+                        print(user?.address ?? " ")
+                        if !credential {
+                            showBorders = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                showBorders = false
+                            }
                         }
                     }
+                    
                 }
                 .padding()
                 .foregroundColor(Color.white )
@@ -61,6 +67,11 @@ NavigationStack {
                 .background(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 .cornerRadius(10)
                 .padding()
+                .onChange(of: user) { newUser in
+                                if newUser != nil {
+                                    correctCredentials = true
+                                }
+                            }
                 Text("¿Es nuevo usuario?")
                 NavigationLink(destination: RegisterView()) {
                     Text("Cree su cuenta")
@@ -70,7 +81,7 @@ NavigationStack {
             }
         }
         .navigationDestination(isPresented: $correctCredentials) {
-            MainMenuView(user: username)
+            MainMenuView(user: user ?? User())
         }
 }
 

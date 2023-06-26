@@ -5,12 +5,6 @@
 //  Created by Fernando Ahuatzin Gallardo on 15/06/23.
 //
 
-
-
-
-
-
-
 import SwiftUI
 import UIKit
 
@@ -18,20 +12,23 @@ struct RegisterView: View {
     @State var username: String = ""
     @State var password: String = ""
     @State var confirmedPassword: String = ""
+    @State var name: String = ""
+    @State var lastname: String = ""
     @State var street: String = ""
     @State var number: String = ""
     @State var city: String = ""
     @State var zip: String = ""
-    @State var university: String = ""
+    @State var latitude: Double = 0.0
+    @State var longitude: Double = 0.0
+    @State var selectedUniversity = 0
     @State var correctRegister: Bool = false
     @State var phase: Bool = false
     let sessionManager = SessionManager()
     @State var userAddress: String = ""
-    @State var showBorders: [Bool] = [false,false,false,false,false,false,false,false]
-    @State private var selectedUniversity = 0
+    @State var showBorders: [Bool] = [false,false,false,false,false,false,false,false, false]
     let universities = ["UDLAP", "BUAP", "Tecnologico de Monterrey", "Ibero Puebla", "Anahuac Puebla", "UPAEP"]
-    
-    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.dismiss) var dismiss
     
     
     var body: some View {
@@ -75,14 +72,27 @@ struct RegisterView: View {
                         .cornerRadius(10)
                         .border(showBorders[1] ? Color.red : Color.clear)
                     
+                    HStack {
+                        TextField("Nombre", text: $name)
+                            .padding()
+                            .frame(width:150, height:50)
+                            .background(Color.black.opacity(0.05))
+                            .cornerRadius(10)
+                        TextField("Apellido", text: $lastname)
+                            .padding()
+                            .frame(width:150, height:50)
+                            .background(Color.black.opacity(0.05))
+                            .cornerRadius(10)
+                    }
+                    
                     Picker(selection: $selectedUniversity, label: Text("Picker")
-                        .foregroundColor(.black)) { // Aplicar el color negro al texto de la etiqueta
-                            Text("Selecciona tu universidad")
-                            ForEach(0..<universities.count) { index in
-                                Text(universities[index]).tag(index + 1)
-                            }
-                        }
-                        .padding(.top)
+                                .foregroundColor(.black)) {
+                                    Text("Selecciona tu universidad")
+                                    ForEach(0..<universities.count) { index in
+                                        Text(universities[index]).tag(index)
+                                    }
+                                }
+                                .padding(.top)
                     
                     Text ("Dirección")
                         .bold()
@@ -131,34 +141,37 @@ struct RegisterView: View {
                             //aqui se manda a llamar para ver que no haya espacios vacios si el arreglo esta vacio correctRegister es true si esta con elementos es false y se recorre el arreglo sacando los index para volver showBorders true en tales posiciones
                             userAddress = "\(street) \(number) \(city) \(zip)"
                             let manager = AddressLocationManager()
-                            manager.convertAddressToCoordinates(address: userAddress)
+                            manager.convertAddressToCoordinates(address: userAddress) { (coordinates) in
+                                if let receivedLatitude = coordinates?.0, let receivedLongitude = coordinates?.1 {
+                                    latitude = receivedLatitude
+                                    longitude = receivedLongitude
+                                    CoreDataManager().addUser(username: username, universityName: universities[selectedUniversity], password: password, longitude: longitude, latitude: latitude, address: userAddress, name: name, lastname: lastname, context: managedObjectContext)
+                                    CoreDataManager().showUser(context: managedObjectContext)
+                                    //CoreDataManager().deleteUsers(context: managedObjectContext)
+                                    dismiss()
+                                } else {
+                                    print("No se pudo obtener la latitud y longitud")
+                                }
+                            }
                             
-                            
-                            
+      
                             //-MARK: Save User Preferences
-                            UserDefaults.standard.set(username, forKey: "Username")
+                            /*UserDefaults.standard.set(username, forKey: "Username")
                             UserDefaults.standard.set(password, forKey: "Password")
                             UserDefaults.standard.set(confirmedPassword, forKey: "CPassword")
                             UserDefaults.standard.set(userAddress, forKey: "Address")
                             //UserDefaults.standard.synchronize()
                             //showAlert(message: "Se han guardado tus datos", viewController: self)
                             
-                            
-                            
-                            
                             //- MARK: Get user Preferences
-                            
-                           
-                            
-                            
-                            
+
                             let kusername =  UserDefaults.standard.string(forKey: "Username")
                             let kaddress = UserDefaults.standard.string(forKey: "Address")
                             let kpass = UserDefaults.standard.string(forKey: "Password")
                             let kcpass = UserDefaults.standard.string(forKey: "CPassword")
                             //UserDefaults.standard.synchronize()
 
-                                print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")
+                                print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")*/
                         }
                         
                     }
@@ -172,9 +185,9 @@ struct RegisterView: View {
                 
                 }
             }
-            .navigationDestination(isPresented: $correctRegister) {
+            /*.navigationDestination(isPresented: $correctRegister) {
                 MainMenuView(user: username)
-            }
+            }*/
             
         }
         

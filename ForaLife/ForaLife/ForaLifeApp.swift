@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ForaLifeApp: App {
+    @StateObject private var coreDataManager = CoreDataManager()
+    
     var body: some Scene {
         WindowGroup {
             InitialView()
+                .environment(\.managedObjectContext, coreDataManager.container.viewContext)
         }
     }
 }

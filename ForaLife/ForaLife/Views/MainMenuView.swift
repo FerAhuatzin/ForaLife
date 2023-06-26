@@ -9,17 +9,17 @@ import SwiftUI
 
 struct MainMenuView: View {
     
-    @State var user: String
+    @State var user: User?
     @State var fromAddress: Bool = true
     @State var fromLocation: Bool = false
     
     var body: some View {
-        
+    
         NavigationStack {
                 
                 VStack {
 
-                    Text ("Hola "+user)
+                    Text ("Hola "+(user?.name ?? "Usuario"))
                         .padding()
                         .font(.title)
                         .bold()
@@ -41,7 +41,7 @@ struct MainMenuView: View {
                             Text("Restaurantes")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Restaurantes",typeOfPlace: "restaurant",fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Restaurantes",typeOfPlace: "restaurant",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
@@ -53,7 +53,7 @@ struct MainMenuView: View {
                             Text("Abarrotes")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Abarrotes",typeOfPlace: "grocery", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Abarrotes",typeOfPlace: "grocery", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
@@ -65,7 +65,7 @@ struct MainMenuView: View {
                             Text("Farmacias")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Farmacias",typeOfPlace: "pharmacy", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Farmacias",typeOfPlace: "pharmacy", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
@@ -77,7 +77,7 @@ struct MainMenuView: View {
                             Text("Lavanderías")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", typeOfPlace: "laundry",fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", typeOfPlace: "laundry",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
@@ -89,7 +89,7 @@ struct MainMenuView: View {
                             Text("Paradas de autobús")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Paradas de autobús",typeOfPlace: "taxi_stop", fromAddress: fromAddress)) {
+                            NavigationLink(destination: NearPlacesView(place: "Paradas de autobús",typeOfPlace: "taxi_stop", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
@@ -159,8 +159,8 @@ struct MainMenuView: View {
     }
 }
 
-struct MainMenuView_Previews: PreviewProvider {
+/*struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView(user:"Fernando")
+        MainMenuView(user: User(entity: NSEntityDescription, insertInto: <#T##NSManagedObjectContext?#>))
     }
-}
+}*/
