@@ -147,8 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				1AE4345D2A452D7B0070986C /* Info.plist */,
-				1AF397702A47CD06007C27DD /* DataBase.xcdatamodeld */,
 				1A1735982A3B93D5006D713C /* ForaLifeApp.swift */,
+				1A4B98942A48FBCB0038CE9B /* DataBase */,
 				1A1275A02A3D1E0E00187595 /* Data */,
 				1A2B855A2A421D1200CDBE9D /* Managers */,
 				1A1735C22A3B93EC006D713C /* Views */,
@@ -210,9 +210,17 @@
 				1A7F20EC2A428CEA00E66342 /* MySQLManager.swift */,
 				1A7CCCB12A43E68B0003E2E2 /* DirectionsManager.swift */,
 				1AE4345B2A451DC90070986C /* SessionManager.swift */,
-				1AF3976E2A47CCD0007C27DD /* CoreDataManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		1A4B98942A48FBCB0038CE9B /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				1AF397702A47CD06007C27DD /* DataBase.xcdatamodeld */,
+				1AF3976E2A47CCD0007C27DD /* CoreDataManager.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

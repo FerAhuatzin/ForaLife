@@ -11,12 +11,13 @@ struct NearPlacesView: View {
     @State var place: String
     @State var typeOfPlace: String
     @State var fromAddress: Bool
+    @State var addressLocation: AddressLocation
     @State var departingPlace: String = "hogar"
     @State var latitude = 0.0
     @State var longitude = 0.0
     @State var alreadyEntered = false
-    @State var addressLocation =  AddressLocation(latitude:  19.05174801886088 , longitude: -98.28527204225016)
     @State var placesArray: [Place] = []
+    @State var arrive = [true,false,false]
     @ObservedObject var currrentLocation = CurrentLocationManager()
     let nearPlacesManager = NearPlacesManager()
     let searchLocationManager = SearchLocationManager()
@@ -31,8 +32,13 @@ struct NearPlacesView: View {
                     .bold()
                     .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                     .multilineTextAlignment(.center)
+                    .onAppear() {
+                        if !fromAddress {
+                            departingPlace = "ubicación"
+                        }
+                    }
                 Text("Cerca de tú " + departingPlace)
-                    .font(.title2)
+                    .font(.title)
                     .multilineTextAlignment(.center)
                     .onAppear {
                         // Llama al método de búsqueda al aparecer la vista
@@ -49,6 +55,76 @@ struct NearPlacesView: View {
                 List (placesArray, id: \.id){place in
                     NearPlaceRow(place: place, sourceLatitude: latitude, sourceLongitude: longitude)
                 }
+                
+                Text("¿Cómo planeas llegar?")
+                    .padding()
+                    .font(.title)
+                HStack {
+                    Toggle(isOn: $arrive[0]) {
+                        HStack {
+                            Image(systemName: "figure.walk.circle")
+                                .resizable()
+                                .frame(width: 30, height:30)
+                                .padding()
+                          
+                        }
+                    }
+                    .padding()
+                    .onChange(of: arrive[0]) { newValue in
+                        if arrive[0] {
+                            arrive[1] = !arrive[0]
+                            arrive[2] = !arrive[0]
+                        }
+                        if  !arrive[1] && !arrive[2] {
+                            arrive[0] = true
+                        }
+                        
+                    }
+                    
+                    Toggle(isOn: $arrive[1]) {
+                        HStack {
+                            Image(systemName: "car.circle")
+                                .resizable()
+                                .frame(width: 30, height:30)
+                                .padding()
+                         
+                        }
+                    }
+                    .onChange(of: arrive[1]) { newValue in
+                        if arrive[1] {
+                            arrive[0] = !arrive[1]
+                            arrive[2] = !arrive[1]
+                        }
+                        if !arrive[0] && !arrive[2] {
+                            arrive[1] = true
+                        }
+                       
+                    }
+                    
+                    Toggle(isOn: $arrive[2]) {
+                        HStack {
+                            Image(systemName: "tram.circle")
+                                .resizable()
+                                .frame(width: 30, height:30)
+                                .padding()
+                           
+                        }
+                    }
+                    .padding()
+                    .onChange(of: arrive[2]) { newValue in
+                        if arrive[2] {
+                            arrive[0] = !arrive[2]
+                            arrive[1] = !arrive[2]
+                        }
+                        if !arrive[0] && !arrive[1] {
+                            arrive[2] = true
+                        }
+                        
+                    }
+                    Spacer()
+                
+
+                }
                 Spacer()
                 
                 Footer()
@@ -62,6 +138,6 @@ struct NearPlacesView: View {
 
 struct NearPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true)
+        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true, addressLocation: AddressLocation(latitude: 0.0, longitude: 0.0))
     }
 }
