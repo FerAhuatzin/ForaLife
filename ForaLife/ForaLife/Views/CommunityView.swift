@@ -74,7 +74,7 @@ var body: some View {
                 .padding()
 
                 Spacer()
-                Footer()
+                FooterJustClose()
 
             }
         

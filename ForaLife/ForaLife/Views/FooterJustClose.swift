@@ -11,7 +11,17 @@ struct FooterJustClose: View {
     var body: some View {
         NavigationStack {
             HStack {
-                Text()
+                NavigationLink(destination: InitialView()) {
+                    VStack {
+                        Image(systemName: "x.circle")
+                            .resizable()
+                            .frame(width:20,height: 20)
+                            .foregroundColor(Color.black)
+                        Text("Cerrar")
+                            .font(.subheadline)
+                            .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
+                    }
+                }
             }
         }
     }

@@ -103,7 +103,7 @@ struct NearPlacesView: View {
                 }
                 Spacer()
                 
-                Footer()
+                FooterJustClose()
             }
         }
         
