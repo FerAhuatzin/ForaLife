@@ -11,6 +11,7 @@ struct NearPlaceRow: View {
     @State var place: Place
     let sourceLatitude: Double
     let sourceLongitude: Double
+    @Binding var transportations: [Bool]
     @State var imageArray: [String] = []
     let imageName = "dollarsign.circle"
     @State var price: Int = 0
@@ -33,7 +34,7 @@ struct NearPlaceRow: View {
                     //place.priceLevel = 0
                 }
             Spacer()
-            NavigationLink(destination: PlaceAddressView(sourceLatitude: sourceLatitude, sourceLongitude: sourceLongitude, destinationLatitude: place.latitude, destinationLongitude: place.longitude)){
+            NavigationLink(destination: PlaceAddressView(sourceLatitude: sourceLatitude, sourceLongitude: sourceLongitude, destinationLatitude: place.latitude, destinationLongitude: place.longitude, transportations: transportations)){
                 VStack (alignment: .leading){
                     Text(place.name)
                         .bold()
@@ -58,6 +59,6 @@ struct NearPlaceRow: View {
 
 struct NearPlaceRow_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlaceRow(place:Place(id: 0, name: "mrTaco", priceLevel: 2, rating: 4.7, latitude: 44.0, longitude: 888.0, image: Image(systemName: "fork.knife"), distanceToPlace: 22.0), sourceLatitude: 0.0, sourceLongitude: 0)
+        NearPlaceRow(place:Place(id: 0, name: "mrTaco", priceLevel: 2, rating: 4.7, latitude: 44.0, longitude: 888.0, image: Image(systemName: "fork.knife"), distanceToPlace: 22.0), sourceLatitude: 0.0, sourceLongitude: 0, transportations: Binding.constant([true,false]))
     }
 }

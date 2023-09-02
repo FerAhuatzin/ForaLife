@@ -41,7 +41,7 @@ struct AboutTheAppView: View {
                         
                         Text("¿Que es ForaLife?" )
                             .font(.custom("Roboto",size: 40))
-                            .navigationBarBackButtonHidden(true)
+                        
                     }
                     .padding(.top, 100)
                     .padding (.bottom,1)
