@@ -15,6 +15,7 @@ struct DirectionsManager: UIViewRepresentable {
     let sourceLongitude: Double
     let destinationLatitude: Double
     let destinationLongitude: Double
+    let transportation: MKDirectionsTransportType
 
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
@@ -40,7 +41,8 @@ struct DirectionsManager: UIViewRepresentable {
         let request =  MKDirections.Request()
         request.source =  MKMapItem(placemark: source)
         request.destination =  MKMapItem(placemark: destination)
-        request.transportType = .walking
+        request.transportType = transportation
+        print(transportation)
         
         let direcions = MKDirections(request: request)
         direcions.calculate{ response, error in

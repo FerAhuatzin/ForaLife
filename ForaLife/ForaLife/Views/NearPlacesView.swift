@@ -17,7 +17,7 @@ struct NearPlacesView: View {
     @State var longitude = 0.0
     @State var alreadyEntered = false
     @State var placesArray: [Place] = []
-    @State var arrive = [true,false,false]
+    @State var arrive = [true,false]
     @ObservedObject var currentLocationManager = CurrentLocationManager()
     let nearPlacesManager = NearPlacesManager()
     let searchLocationManager = SearchLocationManager()
@@ -43,9 +43,7 @@ struct NearPlacesView: View {
                     .onAppear {
                         // Llama al método de búsqueda al aparecer la vista
                         if !alreadyEntered {
-                           
-                                
-                                
+            
                                 searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currentLocationManager, addressLocation: addressLocation) { lat in
                                     self.latitude = lat
                                 }
@@ -65,7 +63,7 @@ struct NearPlacesView: View {
                         }
                 Spacer()
                 List (placesArray, id: \.id){place in
-                    NearPlaceRow(place: place, sourceLatitude: latitude, sourceLongitude: longitude)
+                    NearPlaceRow(place: place, sourceLatitude: latitude, sourceLongitude: longitude, transportations: $arrive)
                 }
                 
                 Text("¿Cómo planeas llegar?")
@@ -83,14 +81,7 @@ struct NearPlacesView: View {
                     }
                     .padding()
                     .onChange(of: arrive[0]) { newValue in
-                        if arrive[0] {
-                            arrive[1] = !arrive[0]
-                            arrive[2] = !arrive[0]
-                        }
-                        if  !arrive[1] && !arrive[2] {
-                            arrive[0] = true
-                        }
-                        
+                        arrive[1] = !arrive[0]
                     }
                     
                     Toggle(isOn: $arrive[1]) {
@@ -103,36 +94,9 @@ struct NearPlacesView: View {
                         }
                     }
                     .onChange(of: arrive[1]) { newValue in
-                        if arrive[1] {
-                            arrive[0] = !arrive[1]
-                            arrive[2] = !arrive[1]
-                        }
-                        if !arrive[0] && !arrive[2] {
-                            arrive[1] = true
-                        }
-                       
+                        arrive[0] = !arrive[1]          
                     }
                     
-                    Toggle(isOn: $arrive[2]) {
-                        HStack {
-                            Image(systemName: "tram.circle")
-                                .resizable()
-                                .frame(width: 30, height:30)
-                                .padding()
-                           
-                        }
-                    }
-                    .padding()
-                    .onChange(of: arrive[2]) { newValue in
-                        if arrive[2] {
-                            arrive[0] = !arrive[2]
-                            arrive[1] = !arrive[2]
-                        }
-                        if !arrive[0] && !arrive[1] {
-                            arrive[2] = true
-                        }
-                        
-                    }
                     Spacer()
                 
 
