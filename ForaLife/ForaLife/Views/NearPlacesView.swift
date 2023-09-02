@@ -18,7 +18,7 @@ struct NearPlacesView: View {
     @State var alreadyEntered = false
     @State var placesArray: [Place] = []
     @State var arrive = [true,false,false]
-    @ObservedObject var currrentLocation = CurrentLocationManager()
+    @ObservedObject var currentLocationManager = CurrentLocationManager()
     let nearPlacesManager = NearPlacesManager()
     let searchLocationManager = SearchLocationManager()
     
@@ -42,15 +42,27 @@ struct NearPlacesView: View {
                     .multilineTextAlignment(.center)
                     .onAppear {
                         // Llama al método de búsqueda al aparecer la vista
-                        if !alreadyEntered{
-                            latitude = searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
-                            longitude = searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currrentLocation, addressLocation: addressLocation)
-                            nearPlacesManager.searchNearbyPlaces(sourceLatitude:latitude,sourceLongitude: longitude,typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js") { places in
-                                placesArray = places
+                        if !alreadyEntered {
+                           
+                                
+                                
+                                searchLocationManager.getSearchLocationLatitude(fromAddress: fromAddress, currentLocation: currentLocationManager, addressLocation: addressLocation) { lat in
+                                    self.latitude = lat
+                                }
+                                
+                                searchLocationManager.getSearchLocationLongitude(fromAddress: fromAddress, currentLocation: currentLocationManager, addressLocation: addressLocation) { lon in
+                                    self.longitude = lon
+                                }
+                            print("Latitude: \(latitude)")
+                            print("Longitude: \(longitude)")
+                            nearPlacesManager.searchNearbyPlaces(sourceLatitude: latitude, sourceLongitude: longitude, typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js") { places in
+                                    
+                                    self.placesArray = places
+                                }
+                                
+                                alreadyEntered = true
                             }
-                            alreadyEntered  = true
                         }
-                    }
                 Spacer()
                 List (placesArray, id: \.id){place in
                     NearPlaceRow(place: place, sourceLatitude: latitude, sourceLongitude: longitude)
@@ -138,6 +150,6 @@ struct NearPlacesView: View {
 
 struct NearPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true, addressLocation: AddressLocation(latitude: 0.0, longitude: 0.0))
+        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true, addressLocation: AddressLocation(latitude: 2.0, longitude: 2.0))
     }
 }

@@ -10,24 +10,24 @@ import Alamofire
 
 class SearchLocationManager {
     
-    func getSearchLocationLatitude (fromAddress: Bool, currentLocation: CurrentLocationManager, addressLocation: AddressLocation) -> Double{
+    func getSearchLocationLatitude (fromAddress: Bool, currentLocation: CurrentLocationManager, addressLocation: AddressLocation, completion: @escaping (Double) -> Void){
         if fromAddress {
             print("Latitude:\(addressLocation.latitude)")
-            return addressLocation.latitude
+            completion(addressLocation.latitude)
         }
         else {
             print("Latitude:\(currentLocation.userLocation.center.latitude)")
-            return currentLocation.userLocation.center.latitude
+            completion(currentLocation.userLocation.center.latitude)
         }
     }
-    func getSearchLocationLongitude (fromAddress: Bool, currentLocation: CurrentLocationManager, addressLocation: AddressLocation) -> Double{
+    func getSearchLocationLongitude (fromAddress: Bool, currentLocation: CurrentLocationManager, addressLocation: AddressLocation, completion: @escaping (Double) -> Void) {
         if fromAddress {
             print("Longitude:\(addressLocation.longitude)")
-            return addressLocation.longitude
+            completion(addressLocation.longitude)
         }
         else {
             print("Longitude:\(currentLocation.userLocation.center.longitude)")
-            return currentLocation.userLocation.center.longitude
+            completion(currentLocation.userLocation.center.longitude)
         }
     }
     
