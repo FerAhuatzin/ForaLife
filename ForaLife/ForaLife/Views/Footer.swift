@@ -12,7 +12,7 @@ struct Footer: View {
         NavigationStack {
             HStack {
                                
-                NavigationLink(destination: ProfileView()) {
+                NavigationLink(destination: ProfileView(nombreUsuario: "Ladismtz", Nombre: "Ladislao", Apellido: "Martinez", Calle: "Primavera", Numero: "15", Ciudad: "Cuernavaca", codigoPostal: "62554")) {
                     VStack{
                         Image(systemName: "person.circle")
                             .resizable()
