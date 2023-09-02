@@ -19,9 +19,9 @@ class CurrentLocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
     
     override init() {
         super.init()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingHeading()
+        locationManager.startUpdatingLocation()
         locationManager.delegate = self
     }
     
@@ -31,6 +31,9 @@ extension CurrentLocationManager{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {return}
         userLocation = .init(center: location.coordinate, span: .init(latitudeDelta: Span.delta, longitudeDelta: Span.delta))
+        //print("Latitude:\(userLocation.center.latitude)")
+        //print("Longitude:\(userLocation.center.longitude)")
+        
         
     }
 }
