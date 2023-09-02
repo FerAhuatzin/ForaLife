@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct RegisterView: View {
-    @State var username: String = ""
+    @State public var username: String = ""
     @State var password: String = ""
     @State var confirmedPassword: String = ""
     @State var name: String = ""
