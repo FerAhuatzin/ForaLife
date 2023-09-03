@@ -41,7 +41,7 @@ struct CommunityView: View {
                     Button("Cultural"){
                             category = "Cultural"
                         }
-                    Button("Cmoida"){
+                    Button("Comida"){
                             category = "Comida"
                         }
                     Button("Salidas nocturnas"){
@@ -78,7 +78,7 @@ struct CommunityView: View {
                 
 
 
-                /*NavigationLink (destination: AddPlaceView(university: university)) {
+                NavigationLink (destination: AddPlaceView(university: university)) {
                     Text("Tengo una sugerencia")
                 }
                 .padding()
@@ -86,7 +86,7 @@ struct CommunityView: View {
                 .frame(width:300, height:50)
                 .background(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 .cornerRadius(10)
-                .padding()*/
+                .padding()
 
                 Spacer()
                 FooterJustClose()

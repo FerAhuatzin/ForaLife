@@ -9,11 +9,13 @@ import SwiftUI
 
 struct AddPlaceView: View {
     let categories = ["Deportiva", "Cultural", "Comida", "Salidas nocturnas"]
-    @State var university: String = " "
+    @State var user: User?
+    @State var university: String
     @State var description: String = ""
     @State var name: String = ""
     @State var selectedCategory = 0
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
             Color(hue: 0.374, saturation: 0.846, brightness: 0.426)
@@ -62,7 +64,7 @@ struct AddPlaceView: View {
                     .font(.custom("Roboto", size: 20))
                
                 
-                TextEditor(text: $name)
+                TextEditor(text: $description)
                     .frame(width: 360, height: 300.0)
                     .border(Color.gray,width: 1)
                     .background(Color.black.opacity(0.05))
@@ -71,6 +73,12 @@ struct AddPlaceView: View {
                     .padding(.bottom,10)
                 
                 Button ("Guardar cambios") {
+                    CoreDataManager().addForeignPlaces(placename: name, placeDescription: description, universityName: university, category: categories[selectedCategory], context: managedObjectContext)
+                    
+                    //CoreDataManager().deleteForeignPlaces(context: managedObjectContext)
+                    
+                    
+                    dismiss()
  
                 }
                 .frame(width: 200, height: 50.0)
@@ -89,6 +97,6 @@ struct AddPlaceView: View {
 
 struct AddPlaceView_Previews: PreviewProvider {
     static var previews: some View {
-        AddPlaceView()
+        AddPlaceView(university: "udlap")
     }
 }
