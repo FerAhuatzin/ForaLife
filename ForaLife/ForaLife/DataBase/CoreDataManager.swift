@@ -115,12 +115,13 @@ class CoreDataManager: ObservableObject {
         save(context: context)
     }
     
-    func addForeignPlaces (placename: String ,placeDescription: String ,universityName: String, context: NSManagedObjectContext) {
+    func addForeignPlaces (placename: String ,placeDescription: String ,universityName: String, category: String, context: NSManagedObjectContext) {
         let foreignPlace = ForeignPlaces(context: context)
         foreignPlace.placeName = placename
         foreignPlace.placeInfo = placeDescription
         foreignPlace.universityName = universityName
         foreignPlace.verified = false
+        foreignPlace.category = category
         save(context: context)
     }
     func editForeignPlaces (foreignPlace: ForeignPlaces, placename: String ,placeDescription: String ,universityName: String, context: NSManagedObjectContext) {
