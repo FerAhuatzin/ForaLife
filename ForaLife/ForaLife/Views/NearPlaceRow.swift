@@ -13,9 +13,17 @@ struct NearPlaceRow: View {
     let sourceLongitude: Double
     @Binding var transportations: [Bool]
     @State var imageArray: [String] = []
-    let imageName = "dollarsign.circle"
+    let priceImage = "dollarsign.circle"
+    let ratingImage = "star.circle"
     @State var price: Int = 0
+    @State var rating: String = "No disponible"
     @State var alreadyEntered: Bool = false
+    let numberFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal // Estilo de formato decimal
+            formatter.maximumFractionDigits = 1 // Número de decimales permitidos
+            return formatter
+        }()
     
     var body: some View {
         HStack {
@@ -27,11 +35,16 @@ struct NearPlaceRow: View {
                     if !alreadyEntered {
                         price = place.priceLevel
                         for _ in 0..<price {
-                            imageArray.append(imageName)
+                            imageArray.append(priceImage)
                         }
+                        
+                        if place.rating>0 {
+                            rating = numberFormatter.string(from: NSNumber(value: place.rating)) ?? "No disponible"
+                        }
+                        
                         alreadyEntered = true
                     }
-                    //place.priceLevel = 0
+
                 }
             Spacer()
             NavigationLink(destination: PlaceAddressView(sourceLatitude: sourceLatitude, sourceLongitude: sourceLongitude, destinationLatitude: place.latitude, destinationLongitude: place.longitude, transportations: transportations)){
@@ -47,8 +60,8 @@ struct NearPlaceRow: View {
                                 .foregroundColor(Color.gray)
                         }
                     }
-                    Text("Calificación\(place.rating)")
-                        .foregroundColor(Color.gray)
+                    Text("Calificación: " + rating) // Formatea el rating usando el NumberFormatter
+                                            .foregroundColor(Color.gray)
                     Text("Ver ubicación")
                         .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 }
