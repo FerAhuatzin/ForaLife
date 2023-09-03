@@ -42,9 +42,8 @@ class CoreDataManager: ObservableObject {
         user.lastname = lastname
         save(context: context)
     }
-    func editUser(user: User, username: String, universityName: String, password: String, longitude: Double, latitude: Double, address: String, name: String, lastname: String, context: NSManagedObjectContext) {
+    func editUser(user: User, username: String,  password: String, longitude: Double, latitude: Double, address: String, name: String, lastname: String, context: NSManagedObjectContext) {
         user.userName = username
-        user.universityName = universityName
         user.password = password
         user.longitude = longitude
         user.latitude = latitude
