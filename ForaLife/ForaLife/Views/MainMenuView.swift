@@ -12,7 +12,7 @@ struct MainMenuView: View {
     @State var user: User?
     @State var fromAddress: Bool = true
     @State var fromLocation: Bool = false
-    @State var kilometers = 1.0
+    @State var kilometers = 0.0
     @State var isEditing = false
     let numberFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -28,26 +28,27 @@ struct MainMenuView: View {
                 VStack {
 
                     Text ("Hola "+(user?.name ?? "Usuario"))
-                        .padding()
-                        .font(.title)
+                        .padding(.top)
+                        .font(.largeTitle)
                         .bold()
                         .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                         .multilineTextAlignment(.center)
                         .navigationBarBackButtonHidden(true)
                 
                     Text ("¿A dónde necesitas ir hoy?")
-                        .font(.title)
+                        .font(.title2)
                         .multilineTextAlignment(.center)
+                        .padding(.bottom)
                     Spacer()
                        
                     List {
                         HStack {
                             Image(systemName:"fork.knife.circle")
                                 .resizable()
-                                .frame(width: 50, height:50)
+                                .frame(width: 40, height:40)
                                 .padding()
                             Text("Restaurantes")
-                                .font(.title2)
+                                .font(.title3)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                             NavigationLink(destination: NearPlacesView(place: "Restaurantes",typeOfPlace: "restaurant",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
@@ -56,10 +57,10 @@ struct MainMenuView: View {
                         HStack {
                             Image(systemName:"cart.circle")
                                 .resizable()
-                                .frame(width: 50, height:50)
+                                .frame(width: 40, height:40)
                                 .padding()
-                            Text("Supermercados")
-                                .font(.title2)
+                            Text("Supers")
+                                .font(.title3)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                             NavigationLink(destination: NearPlacesView(place: "Supermercados",typeOfPlace: "supermarket", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
@@ -68,10 +69,10 @@ struct MainMenuView: View {
                         HStack {
                             Image(systemName:"cross.case.circle")
                                 .resizable()
-                                .frame(width: 50, height:50)
+                                .frame(width: 40, height:40)
                                 .padding()
                             Text("Farmacias")
-                                .font(.title2)
+                                .font(.title3)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                             NavigationLink(destination: NearPlacesView(place: "Farmacias",typeOfPlace: "pharmacy", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
@@ -80,10 +81,10 @@ struct MainMenuView: View {
                         HStack {
                             Image(systemName:"washer")
                                 .resizable()
-                                .frame(width: 50, height:50)
+                                .frame(width: 40, height:40)
                                 .padding()
                             Text("Lavanderías")
-                                .font(.title2)
+                                .font(.title3)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                             NavigationLink(destination: NearPlacesView(place: "Lavanderías", typeOfPlace: "laundry",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
@@ -92,10 +93,10 @@ struct MainMenuView: View {
                         HStack {
                             Image(systemName:"creditcard.circle")
                                 .resizable()
-                                .frame(width: 50, height:50)
+                                .frame(width: 40, height:40)
                                 .padding()
                             Text("Cajeros automáticos")
-                                .font(.title2)
+                                .font(.title3)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                             NavigationLink(destination: NearPlacesView(place: "Cajeros automáticos",typeOfPlace: "atm", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
@@ -105,10 +106,10 @@ struct MainMenuView: View {
                         HStack {
                             Image(systemName:"person.3.fill")
                                 .resizable()
-                                .frame(width: 50, height:25)
+                                .frame(width: 40, height:20)
                                 .padding()
                             Text("Comunidad")
-                                .font(.title2)
+                                .font(.title3)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                             NavigationLink(destination: CommunityView(university: user?.universityName ?? " ")) {
                                 EmptyView()
@@ -120,8 +121,8 @@ struct MainMenuView: View {
                     
                     
                     Text("¿Desde dónde necesitas ir?")
-                        .padding()
-                        .font(.title)
+                        .padding(.top)
+                        .font(.title2)
                     HStack {
                         
                         Toggle(isOn: $fromAddress) {
@@ -129,12 +130,15 @@ struct MainMenuView: View {
                                 Image(systemName: "house.circle")
                                     .resizable()
                                     .frame(width: 30, height:30)
-                                    .padding()
+                                    .padding(.leading)
                                Text("Hogar")
                                     .font(.callout)
                                     .multilineTextAlignment(.center)
+                                    .padding(.trailing)
                             }
                         }
+                        .frame(width: 175.0)
+                        
                         .onChange(of: fromAddress) { newValue in
                             fromLocation = !fromAddress
                         }
@@ -143,21 +147,24 @@ struct MainMenuView: View {
                                 Image(systemName: "mappin.circle")
                                     .resizable()
                                     .frame(width: 30, height:30)
+                                    
                                 Text("Ubicación")
                                     .font(.callout)
                                     .multilineTextAlignment(.center)
+                                    .padding(.trailing)
                             }
                         }
-                        .padding()
+                        .padding(.trailing)
+                        .frame(width: 200.0)
                         .onChange(of: fromLocation) { newValue in
                             fromAddress = !fromLocation
                         }
                     }
                     
                     VStack {
-                        Text("¿Hasta donde puedes ir?")
+                        Text("¿Hasta dónde puedes ir?")
                             .padding()
-                            .font(.title)
+                            .font(.title2)
                         Slider(
                                     value: $kilometers,
                                     in: 0...10,
