@@ -34,11 +34,11 @@ class NearPlacesManager: NSObject, ObservableObject{
         }
     }
     
-    func searchNearbyPlaces(sourceLatitude: Double, sourceLongitude: Double, typeOfPlace: String, apiKey: String, completion: @escaping ([Place]) -> Void) {
+    func searchNearbyPlaces(sourceLatitude: Double, sourceLongitude: Double, typeOfPlace: String, apiKey: String, meters: Int, completion: @escaping ([Place]) -> Void) {
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         let parameters: [String: Any] = [
             "location": "\(sourceLatitude),\(sourceLongitude)", // La ubicación en formato de latitud,longitud (ejemplo: "37.7749,-122.4194")
-            "radius": "1000", // Radio en metros para la búsqueda de lugares cercanos
+            "radius": String(meters), // Radio en metros para la búsqueda de lugares cercanos
             "type": typeOfPlace, // Tipo de lugar a buscar (en este caso, restaurantes)
             "key": apiKey // Tu clave de API de Google Maps
         ]
