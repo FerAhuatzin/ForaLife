@@ -38,7 +38,7 @@ class NearPlacesManager: NSObject, ObservableObject{
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         let parameters: [String: Any] = [
             "location": "\(sourceLatitude),\(sourceLongitude)", // La ubicación en formato de latitud,longitud (ejemplo: "37.7749,-122.4194")
-            "radius": "5000", // Radio en metros para la búsqueda de lugares cercanos
+            "radius": "1000", // Radio en metros para la búsqueda de lugares cercanos
             "type": typeOfPlace, // Tipo de lugar a buscar (en este caso, restaurantes)
             "key": apiKey // Tu clave de API de Google Maps
         ]
@@ -76,7 +76,7 @@ class NearPlacesManager: NSObject, ObservableObject{
         case "laundry":
             image = Image(systemName: "washer")
         case "atm":
-            image = Image(systemName: "bus.fill")
+            image = Image(systemName: "creditcard.circle")
         default:
             image = Image(systemName: "fork.knife.circle")
         }
