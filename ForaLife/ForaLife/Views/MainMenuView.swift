@@ -50,10 +50,10 @@ struct MainMenuView: View {
                                 .resizable()
                                 .frame(width: 50, height:50)
                                 .padding()
-                            Text("Abarrotes")
+                            Text("Supermercados")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Abarrotes",typeOfPlace: "grocery", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "supermercados",typeOfPlace: "supermarket", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
@@ -82,14 +82,14 @@ struct MainMenuView: View {
                             }
                         }
                         HStack {
-                            Image(systemName:"bus.fill")
+                            Image(systemName:"creditcard.circle")
                                 .resizable()
                                 .frame(width: 50, height:50)
                                 .padding()
-                            Text("Paradas de autobús")
+                            Text("Cajeros automáticos")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Paradas de autobús",typeOfPlace: "taxi_stop", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "Cajeros automáticos",typeOfPlace: "atm", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
                                 EmptyView()
                             }
                         }
