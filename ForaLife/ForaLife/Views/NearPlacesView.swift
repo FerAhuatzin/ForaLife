@@ -12,7 +12,13 @@ struct NearPlacesView: View {
     @State var typeOfPlace: String
     @State var fromAddress: Bool
     @State var addressLocation: AddressLocation
-    @State var departingPlace: String = "hogar"
+    let km: Double
+    var departingPlace: String {
+        if (fromAddress) {
+            return "Hogar"
+        }
+        return "Ubicación"
+    }
     @State var latitude = 0.0
     @State var longitude = 0.0
     @State var alreadyEntered = false
@@ -32,11 +38,6 @@ struct NearPlacesView: View {
                     .bold()
                     .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                     .multilineTextAlignment(.center)
-                    .onAppear() {
-                        if !fromAddress {
-                            departingPlace = "ubicación"
-                        }
-                    }
                 Text("Cerca de tú " + departingPlace)
                     .font(.title)
                     .multilineTextAlignment(.center)
@@ -53,7 +54,7 @@ struct NearPlacesView: View {
                                 }
                             print("Latitude: \(latitude)")
                             print("Longitude: \(longitude)")
-                            nearPlacesManager.searchNearbyPlaces(sourceLatitude: latitude, sourceLongitude: longitude, typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js") { places in
+                            nearPlacesManager.searchNearbyPlaces(sourceLatitude: latitude, sourceLongitude: longitude, typeOfPlace: typeOfPlace, apiKey: "AIzaSyBYAmE0kwIjb3eyVI0dZCcR-vW75tuX1js", meters: Int(km*1000)) { places in
                                     
                                     self.placesArray = places
                                 }
@@ -114,6 +115,6 @@ struct NearPlacesView: View {
 
 struct NearPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true, addressLocation: AddressLocation(latitude: 2.0, longitude: 2.0))
+        NearPlacesView(place: "Restaurantes",typeOfPlace: "Restaurant", fromAddress: true, addressLocation: AddressLocation(latitude: 2.0, longitude: 2.0), km: 1.0)
     }
 }

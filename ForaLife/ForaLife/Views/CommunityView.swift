@@ -15,9 +15,10 @@ struct CommunityView: View {
     @State var foreignPlaces: [ForeignPlaces]?
     @Environment(\.managedObjectContext) var managedObjectContext
     
-var body: some View {
+    var body: some View {
 
-
+        NavigationStack {
+            
             VStack(alignment: .center) {
 
                 Text("Lugares populares")
@@ -77,25 +78,29 @@ var body: some View {
                 
 
 
-                Button("Tengo una sugerencia") {
-                    CoreDataManager().addForeignPlaces(placename: name, placeDescription: aportation, universityName: university, category: "Todas", context: managedObjectContext)
+                /*NavigationLink (destination: AddPlaceView(university: university)) {
+                    Text("Tengo una sugerencia")
                 }
                 .padding()
                 .foregroundColor(Color.white )
                 .frame(width:300, height:50)
                 .background(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 .cornerRadius(10)
-                .padding()
+                .padding()*/
 
                 Spacer()
                 FooterJustClose()
 
             }
         
+        } //end navigationStack
+
+            
+        
         
 
 
-}
+    }
 }
 
 

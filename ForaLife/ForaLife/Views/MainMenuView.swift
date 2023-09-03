@@ -12,6 +12,14 @@ struct MainMenuView: View {
     @State var user: User?
     @State var fromAddress: Bool = true
     @State var fromLocation: Bool = false
+    @State var kilometers = 1.0
+    @State var isEditing = false
+    let numberFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal // Estilo de formato decimal
+            formatter.maximumFractionDigits = 1 // Número de decimales permitidos
+            return formatter
+        }()
     
     var body: some View {
     
@@ -41,7 +49,7 @@ struct MainMenuView: View {
                             Text("Restaurantes")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Restaurantes",typeOfPlace: "restaurant",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "Restaurantes",typeOfPlace: "restaurant",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
                             }
                         }
@@ -53,7 +61,7 @@ struct MainMenuView: View {
                             Text("Supermercados")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "supermercados",typeOfPlace: "supermarket", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "Supermercados",typeOfPlace: "supermarket", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
                             }
                         }
@@ -65,7 +73,7 @@ struct MainMenuView: View {
                             Text("Farmacias")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Farmacias",typeOfPlace: "pharmacy", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "Farmacias",typeOfPlace: "pharmacy", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
                             }
                         }
@@ -77,7 +85,7 @@ struct MainMenuView: View {
                             Text("Lavanderías")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", typeOfPlace: "laundry",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "Lavanderías", typeOfPlace: "laundry",fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
                             }
                         }
@@ -89,7 +97,7 @@ struct MainMenuView: View {
                             Text("Cajeros automáticos")
                                 .font(.title2)
                                 .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
-                            NavigationLink(destination: NearPlacesView(place: "Cajeros automáticos",typeOfPlace: "atm", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0))) {
+                            NavigationLink(destination: NearPlacesView(place: "Cajeros automáticos",typeOfPlace: "atm", fromAddress: fromAddress, addressLocation: AddressLocation(latitude: user?.latitude ?? 0.0, longitude: user?.longitude ?? 0.0), km: kilometers)) {
                                 EmptyView()
                             }
                         }
@@ -145,6 +153,25 @@ struct MainMenuView: View {
                             fromAddress = !fromLocation
                         }
                     }
+                    
+                    VStack {
+                        Text("¿Hasta donde puedes ir?")
+                            .padding()
+                            .font(.title)
+                        Slider(
+                                    value: $kilometers,
+                                    in: 0...10,
+                                    step: 0.5,
+                                    onEditingChanged: { editing in
+                                        isEditing = editing
+                                    }
+                                )
+                        .accentColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
+                        
+                        Text("\(numberFormatter.string(from: NSNumber(value: kilometers)) ?? "cargando") km")
+                            .foregroundColor(isEditing ? Color(hue: 0.374, saturation: 0.846, brightness: 0.426) : .black)
+                    }
+                    
                     
                     Spacer()
 
