@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct Footer: View {
+    @State var user: User?
     var body: some View {
         NavigationStack {
             HStack {
                                
-                NavigationLink(destination: ProfileView(nombreUsuario: "Ladismtz", Nombre: "Ladislao", Apellido: "Martinez", Calle: "Primavera", Numero: "15", Ciudad: "Cuernavaca", codigoPostal: "62554")) {
+                NavigationLink(destination: ProfileView(user: user ?? User())) {
                     VStack{
                         Image(systemName: "person.circle")
                             .resizable()
