@@ -149,7 +149,7 @@ struct MainMenuView: View {
                     Spacer()
 
                     
-                    Footer()
+                    Footer(user:user)
                     
                 }
             
