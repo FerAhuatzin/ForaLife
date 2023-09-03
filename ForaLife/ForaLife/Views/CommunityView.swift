@@ -11,6 +11,7 @@ struct CommunityView: View {
     let university: String
     @State var aportation: String = ""
     @State var name: String = ""
+    @State var category: String = "Todas"
     @State var foreignPlaces: [ForeignPlaces]?
     @Environment(\.managedObjectContext) var managedObjectContext
     
@@ -28,9 +29,36 @@ var body: some View {
                     .lineLimit(0)
                     .bold()
                     .font(.title)
+                    .padding(.bottom)
+                Menu("Escoger Categoría") {
+                    Button("Todas"){
+                            category  = "Todas"
+                        }
+                    Button("Deportiva"){
+                            category  = "Deportiva"
+                        }
+                    Button("Cultural"){
+                            category = "Cultural"
+                        }
+                    Button("Cmoida"){
+                            category = "Comida"
+                        }
+                    Button("Salidas nocturnas"){
+                            category = "Salidas nocturnas"
+                        }
+                }
+                .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                 Spacer()
                 List(foreignPlaces ?? [], id: \.self) { place in
-                    CommunityViewRow(place: place)
+                    if (category.contains("Todas")) {
+                        CommunityViewRow(place: place)
+                    }
+                    else {
+                        if (category.contains(place.category ?? " ")) {
+                            CommunityViewRow(place: place)
+                        }
+                    }
+                    
                     
                 }
                 .onAppear {
@@ -46,25 +74,11 @@ var body: some View {
                 }
                 
 
-                Text("¿Conoces algun otro lugar?")
-                    .bold()
-                    .font(.title3)
                 
-                TextField("Escribe el título del lugar aquí", text: $name)
-                    .padding()
-                    .frame(width:300, height:50)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-
-                TextField("Escribe la descripción aquí", text: $aportation)
-                    .padding()
-                    .frame(width:300, height:100)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
 
 
-                Button("Enviar suerencia") {
-                    CoreDataManager().addForeignPlaces(placename: name, placeDescription: aportation, universityName: university, context: managedObjectContext)
+                Button("Tengo una sugerencia") {
+                    CoreDataManager().addForeignPlaces(placename: name, placeDescription: aportation, universityName: university, category: "Todas", context: managedObjectContext)
                 }
                 .padding()
                 .foregroundColor(Color.white )
