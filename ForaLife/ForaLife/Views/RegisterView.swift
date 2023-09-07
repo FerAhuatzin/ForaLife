@@ -20,12 +20,12 @@ struct RegisterView: View {
     @State var zip: String = ""
     @State var latitude: Double = 0.0
     @State var longitude: Double = 0.0
-    @State var selectedUniversity = 0
+    @State var selectedUniversity = -1
     @State var correctRegister: Bool = false
-    @State var phase: Bool = false
+    @State var phase: Bool = true
     let sessionManager = SessionManager()
     @State var userAddress: String = ""
-    @State var showBorders: [Bool] = [false,false,false,false,false,false,false,false, false]
+    @State var showBorders: [Bool] = [false,false,false,false,false,false,false,false, false, false]
     let universities = ["UDLAP", "BUAP", "Tecnologico de Monterrey", "Ibero Puebla", "Anahuac Puebla", "UPAEP"]
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) var dismiss
@@ -56,6 +56,7 @@ struct RegisterView: View {
                         .frame(width:300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
+                        .border(showBorders[0] ? Color.red : Color.clear)
                     
                     
                     SecureField("Contraseña", text: $password)
@@ -63,14 +64,14 @@ struct RegisterView: View {
                         .frame(width:300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
-                        .border(showBorders[0] ? Color.red : Color.clear)
+                        .border(showBorders[1] ? Color.red : Color.clear)
                     
                     SecureField("Confirmar contraseña", text: $confirmedPassword)
                         .padding()
                         .frame(width:300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
-                        .border(showBorders[1] ? Color.red : Color.clear)
+                        .border(showBorders[2] ? Color.red : Color.clear)
                     
                     HStack {
                         TextField("Nombre", text: $name)
@@ -78,11 +79,13 @@ struct RegisterView: View {
                             .frame(width:150, height:50)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
+                            .border(showBorders[3] ? Color.red : Color.clear)
                         TextField("Apellido", text: $lastname)
                             .padding()
                             .frame(width:150, height:50)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
+                            .border(showBorders[4] ? Color.red : Color.clear)
                     }
                     
                     Picker(selection: $selectedUniversity, label: Text("Picker")
@@ -93,6 +96,7 @@ struct RegisterView: View {
                                     }
                                 }
                                 .padding(.top)
+                                .border(showBorders[9] ? Color.red : Color.clear)
                     
                     Text ("Dirección")
                         .bold()
@@ -104,12 +108,13 @@ struct RegisterView: View {
                             .frame(width:200, height:50)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
+                            .border(showBorders[5] ? Color.red : Color.clear)
                         TextField("Número", text: $number)
                             .padding()
                             .frame(width:100, height:50)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
-                        
+                            .border(showBorders[6] ? Color.red : Color.clear)
                     }
                     HStack {
                         TextField("Ciudad", text: $city)
@@ -117,26 +122,103 @@ struct RegisterView: View {
                             .frame(width:150, height:50)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
+                            .border(showBorders[7] ? Color.red : Color.clear)
                         TextField("Código postal", text: $zip)
                             .padding()
                             .frame(width:150, height:50)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
+                            .border(showBorders[8] ? Color.red : Color.clear)
                         
                     }
                         
                     Button("Crear cuenta") {
                         //Verificar contraseña es igual, guardar en base de datos usuario, contraseña, direccion y coordenadas de la direccion y mostrar ventana confirmación cuenta
                         phase = sessionManager.comparePassword(password: password, verifiedPassword: confirmedPassword)
-                        if !phase {
-                            showBorders[0] = true
-                            showBorders[1] = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                showBorders[0] = false
-                                showBorders[1] = false
+                        
+                            if (username == "") {
+                                phase = false
+                                showBorders[0] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[0] = false
+                                }
                             }
-                        }
-                        else {
+                            if (password == "") {
+                                phase = false
+                                showBorders[1] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[1] = false
+                                }
+                            }
+                            if (confirmedPassword == "") {
+                                phase = false
+                                showBorders[2] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[2] = false
+                                }
+                            }
+                            if (password != confirmedPassword) {
+                                phase = false
+                                showBorders[1] = true
+                                showBorders[2] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[1] = false
+                                    showBorders[2] = false
+                                }
+                            }
+                            if (name == "") {
+                                phase = false
+                                showBorders[3] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[3] = false
+                                }
+                            }
+                            if (lastname == "") {
+                                phase = false
+                                showBorders[4] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[4] = false
+                                }
+                            }
+                            if (street == "") {
+                                phase = false
+                                showBorders[5] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[5] = false
+                                }
+                            }
+                            if (number == "") {
+                                phase = false
+                                showBorders[6] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[6] = false
+                                }
+                            }
+                            if (city == "") {
+                                phase = false
+                                showBorders[7] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[7] = false
+                                }
+                            }
+                            if (zip == "") {
+                                phase = false
+                                showBorders[8] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[8] = false
+                                }
+                            }
+                        
+                            if (selectedUniversity == -1) {
+                                phase = false
+                                showBorders[9] = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    showBorders[9] = false
+                                }
+                            }
+                            
+                        
+                        if phase {
                             correctRegister = true
                             //aqui se manda a llamar para ver que no haya espacios vacios si el arreglo esta vacio correctRegister es true si esta con elementos es false y se recorre el arreglo sacando los index para volver showBorders true en tales posiciones
                             userAddress = "\(street) \(number) \(city) \(zip)"
@@ -160,23 +242,6 @@ struct RegisterView: View {
                             }
                             
       
-                            //-MARK: Save User Preferences
-                            /*UserDefaults.standard.set(username, forKey: "Username")
-                            UserDefaults.standard.set(password, forKey: "Password")
-                            UserDefaults.standard.set(confirmedPassword, forKey: "CPassword")
-                            UserDefaults.standard.set(userAddress, forKey: "Address")
-                            //UserDefaults.standard.synchronize()
-                            //showAlert(message: "Se han guardado tus datos", viewController: self)
-                            
-                            //- MARK: Get user Preferences
-
-                            let kusername =  UserDefaults.standard.string(forKey: "Username")
-                            let kaddress = UserDefaults.standard.string(forKey: "Address")
-                            let kpass = UserDefaults.standard.string(forKey: "Password")
-                            let kcpass = UserDefaults.standard.string(forKey: "CPassword")
-                            //UserDefaults.standard.synchronize()
-
-                                print("Username: \(kusername), password: \(kpass), Direccion: \(kaddress)")*/
                         }
                         
                     }
@@ -190,9 +255,7 @@ struct RegisterView: View {
                 
                 }
             }
-            /*.navigationDestination(isPresented: $correctRegister) {
-                MainMenuView(user: username)
-            }*/
+
             
         }
         

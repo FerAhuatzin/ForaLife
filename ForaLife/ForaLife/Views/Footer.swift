@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Footer: View {
     @State var user: User?
+    @State private var goToView: Bool = false
+
     
     var body: some View {
         NavigationStack {
@@ -27,8 +29,8 @@ struct Footer: View {
                     }
                 }
                 .padding()
-                NavigationLink(destination: InitialView()) {
-                    VStack {
+
+                VStack {
                         Image(systemName: "x.circle")
                             .resizable()
                             .frame(width:20,height: 20)
@@ -37,7 +39,10 @@ struct Footer: View {
                             .font(.subheadline)
                             .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                     }
+                    .onTapGesture {
+                        goToView.toggle()
                 }
+
                 .padding()
                 NavigationLink(destination: AboutTheAppView()) {
                     VStack {
@@ -53,6 +58,10 @@ struct Footer: View {
                 .padding()
             }
         }
+        .navigationDestination(isPresented: $goToView) {
+            InitialView()
+        }
+
         
         
     }

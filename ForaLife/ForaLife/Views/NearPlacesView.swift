@@ -71,6 +71,7 @@ struct NearPlacesView: View {
                     .padding()
                     .font(.title)
                 HStack {
+                    Spacer()
                     Toggle(isOn: $arrive[0]) {
                         HStack {
                             Image(systemName: "figure.walk.circle")
@@ -80,11 +81,12 @@ struct NearPlacesView: View {
                           
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    .frame(width: 100.0)
                     .onChange(of: arrive[0]) { newValue in
                         arrive[1] = !arrive[0]
                     }
-                    
+                    Spacer()
                     Toggle(isOn: $arrive[1]) {
                         HStack {
                             Image(systemName: "car.circle")
@@ -94,6 +96,8 @@ struct NearPlacesView: View {
                          
                         }
                     }
+                    .padding(.horizontal)
+                    .frame(width: 100.0)
                     .onChange(of: arrive[1]) { newValue in
                         arrive[0] = !arrive[1]          
                     }
