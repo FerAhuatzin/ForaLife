@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FooterJustClose: View {
+    @State private var goToView: Bool = false
     var body: some View {
         NavigationStack {
             HStack {
-                NavigationLink(destination: InitialView()) {
-                    VStack {
+                VStack {
                         Image(systemName: "x.circle")
                             .resizable()
                             .frame(width:20,height: 20)
@@ -21,9 +21,16 @@ struct FooterJustClose: View {
                             .font(.subheadline)
                             .foregroundColor(Color(hue: 0.374, saturation: 0.846, brightness: 0.426))
                     }
-                }
+                    .onTapGesture {
+                        goToView.toggle()
+                    }
+
             }
         }
+        .navigationDestination(isPresented: $goToView) {
+            InitialView()
+        }
+
     }
 }
 

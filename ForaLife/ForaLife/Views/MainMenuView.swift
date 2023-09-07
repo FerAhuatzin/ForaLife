@@ -12,7 +12,7 @@ struct MainMenuView: View {
     @State var user: User?
     @State var fromAddress: Bool = true
     @State var fromLocation: Bool = false
-    @State var kilometers = 0.0
+    @State var kilometers = 2.0
     @State var isEditing = false
     let numberFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -167,7 +167,7 @@ struct MainMenuView: View {
                             .font(.title2)
                         Slider(
                                     value: $kilometers,
-                                    in: 0...10,
+                                    in: 0.5...10,
                                     step: 0.5,
                                     onEditingChanged: { editing in
                                         isEditing = editing
